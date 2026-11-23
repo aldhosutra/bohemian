@@ -1,0 +1,25 @@
+{
+ "antialgorithm": {
+  "openai/gpt-5.4-mini": {
+   "original": 0.5166666666666667,
+   "unpredictable": 0.5291666666666667,
+   "distinctive": 0.4708333333333333,
+   "prefer": 0.4583333333333333,
+   "task": 0.45416666666666666
+  },
+  "google/gemini-2.5-flash-lite": {
+   "original": 0.48333333333333334,
+   "unpredictable": 0.45,
+   "distinctive": 0.45,
+   "prefer": 0.44166666666666665,
+   "task": 0.48333333333333334
+  },
+  "openai/gpt-4o-mini": {
+   "original": 0.49166666666666664,
+   "unpredictable": 0.5916666666666667,
+   "distinctive": 0.575,
+   "prefer": 0.5916666666666667,
+   "task": 0.5
+  }
+ }
+}

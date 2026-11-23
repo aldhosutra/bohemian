@@ -1,0 +1,30 @@
+{
+ "picks": {
+  "market/DeepSeek": "PXB",
+  "market/Haiku": "BHB",
+  "cat/DeepSeek": "VVX",
+  "cat/Haiku": "8RN",
+  "bees/DeepSeek": "9YC",
+  "bees/Haiku": "9JS",
+  "run/DeepSeek": "DSB",
+  "run/Haiku": "FRP",
+  "choir/DeepSeek": "KAE",
+  "choir/Haiku": "763",
+  "horror/DeepSeek": "DSX",
+  "horror/Haiku": "SDD"
+ },
+ "decoded": {
+  "market/DeepSeek": "market/deepseek/deepseek-v4.1-flash/baseline:1",
+  "market/Haiku": "market/anthropic/claude-haiku-5.5/bohemian_v4b:1",
+  "cat/DeepSeek": "cat/deepseek/deepseek-v4.1-flash/antialgorithm:1",
+  "cat/Haiku": "cat/anthropic/claude-haiku-5.5/antialgorithm:0",
+  "bees/DeepSeek": "bees/deepseek/deepseek-v4.1-flash/bohemian_v4b:1",
+  "bees/Haiku": "bees/anthropic/claude-haiku-5.5/bohemian_v4b:0",
+  "run/DeepSeek": "run/deepseek/deepseek-v4.1-flash/bohemian_v4b:1",
+  "run/Haiku": "run/anthropic/claude-haiku-5.5/antialgorithm:0",
+  "choir/DeepSeek": "choir/deepseek/deepseek-v4.1-flash/bohemian_v4b:1",
+  "choir/Haiku": "choir/anthropic/claude-haiku-5.5/bohemian_v4b:0",
+  "horror/DeepSeek": "horror/deepseek/deepseek-v4.1-flash/baseline:0",
+  "horror/Haiku": "horror/anthropic/claude-haiku-5.5/bohemian_v4b:0"
+ }
+}

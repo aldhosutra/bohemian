@@ -75,9 +75,10 @@ def run_case(judge, case):
 
 
 def main():
+    judges = sys.argv[1:] or JUDGES  # optional: model ids to test instead of the default judges
     ok_all = True
     report = {}
-    for judge in JUDGES:
+    for judge in judges:
         report[judge] = []
         for i, case in enumerate(CASES):
             fails, scores = run_case(judge, case)
@@ -87,7 +88,8 @@ def main():
             print(f"{judge} case {i}: {status}")
             for f in fails:
                 print("   ", f)
-    out = Path(__file__).resolve().parent / "results" / "judge_selftest.json"
+    name = "judge_selftest.json" if judges == JUDGES else "judge_selftest_" + "_".join(j.split("/")[-1] for j in judges) + ".json"
+    out = Path(__file__).resolve().parent / "results" / name
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=1), encoding="utf-8")
     print("ALL JUDGES PASS" if ok_all else "SOME CHECKS FAILED: see results/judge_selftest.json")

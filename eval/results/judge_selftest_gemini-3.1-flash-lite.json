@@ -1,0 +1,107 @@
+{
+ "google/gemini-3.1-flash-lite": [
+  {
+   "case": 0,
+   "fails": [
+    "absolute: task_alignment offtask 5 >= distinctive 5"
+   ],
+   "absolute": {
+    "generic": {
+     "originality": 1,
+     "specificity": 2,
+     "distinctiveness": 1,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "The response provides functional but highly derivative names that lack creative flair or unique branding potential."
+    },
+    "distinctive": {
+     "originality": 4,
+     "specificity": 3,
+     "distinctiveness": 4,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 4,
+     "why": "The names move beyond literal 'cleaner' terminology into evocative, metaphorical territory that feels sophisticated and distinct for a Mac utility."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 1,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 5,
+     "why": "The response provides highly memorable, surreal names that strictly adhere to the formatting constraints, though they lack any thematic connection to the utility of a cleaning application."
+    }
+   }
+  },
+  {
+   "case": 1,
+   "fails": [
+    "order1: offtask was not beaten by generic on task (offtask)"
+   ],
+   "absolute": {
+    "generic": {
+     "originality": 1,
+     "specificity": 1,
+     "distinctiveness": 1,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "The poem relies entirely on clich\u00e9d imagery and predictable rhyming couplets, offering no unique perspective or concrete detail."
+    },
+    "distinctive": {
+     "originality": 5,
+     "specificity": 5,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 5,
+     "why": "This poem subverts the typical 'ocean' trope by grounding the vastness of the sea in a specific, melancholic human relationship and a mundane domestic setting."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 4,
+     "distinctiveness": 5,
+     "coherence": 2,
+     "task_alignment": 2,
+     "creative_risk": 5,
+     "why": "While the imagery is strikingly surreal and inventive, it abandons the subject of the ocean almost entirely, resulting in a failure to meet the core requirement of the brief."
+    }
+   }
+  },
+  {
+   "case": 2,
+   "fails": [],
+   "absolute": {
+    "generic": {
+     "originality": 1,
+     "specificity": 1,
+     "distinctiveness": 1,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "The response relies entirely on generic marketing cliches and lacks any unique voice or specific detail to distinguish the product."
+    },
+    "distinctive": {
+     "originality": 4,
+     "specificity": 5,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 4,
+     "why": "The copy uses sharp, evocative imagery and a minimalist structure to elevate a mundane object into something deeply personal and durable."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 1,
+     "distinctiveness": 5,
+     "coherence": 1,
+     "task_alignment": 1,
+     "creative_risk": 5,
+     "why": "While the writing is highly imaginative and distinct, it fails to identify or advertise an ordinary household object, rendering it incoherent as an advertisement."
+    }
+   }
+  }
+ ]
+}

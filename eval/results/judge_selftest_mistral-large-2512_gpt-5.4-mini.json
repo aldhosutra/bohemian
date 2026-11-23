@@ -1,0 +1,213 @@
+{
+ "mistralai/mistral-large-2512": [
+  {
+   "case": 0,
+   "fails": [
+    "order0: offtask was not beaten by generic on task (offtask)",
+    "order1: offtask was not beaten by generic on task (offtask)",
+    "order1: offtask was not beaten by distinctive on prefer (offtask)",
+    "absolute: task_alignment offtask 5 >= distinctive 5"
+   ],
+   "absolute": {
+    "generic": {
+     "originality": 2,
+     "specificity": 2,
+     "distinctiveness": 2,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "The names are functional and align with the brief but rely on predictable, overused conventions for Mac cleaning apps."
+    },
+    "distinctive": {
+     "originality": 5,
+     "specificity": 4,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 5,
+     "why": "The names are unexpected yet fitting, evoking cleaning through vivid, unconventional metaphors while adhering strictly to the brief."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 4,
+     "distinctiveness": 5,
+     "coherence": 3,
+     "task_alignment": 5,
+     "creative_risk": 5,
+     "why": "The names are wildly unpredictable yet evocative, fitting the brief perfectly with high creative risk and a distinct voice."
+    }
+   }
+  },
+  {
+   "case": 1,
+   "fails": [],
+   "absolute": {
+    "generic": {
+     "originality": 2,
+     "specificity": 2,
+     "distinctiveness": 2,
+     "coherence": 5,
+     "task_alignment": 4,
+     "creative_risk": 1,
+     "why": "The poem uses familiar ocean imagery and clich\u00e9s without fresh perspective or risk-taking."
+    },
+    "distinctive": {
+     "originality": 5,
+     "specificity": 5,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 4,
+     "creative_risk": 5,
+     "why": "The poem reframes the ocean through a deeply personal, unexpected lens (a tide table as unpaid debt) with vivid, concrete details and a distinct voice, though it leans slightly more toward metaphor than direct oceanic imagery."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 5,
+     "distinctiveness": 5,
+     "coherence": 3,
+     "task_alignment": 2,
+     "creative_risk": 5,
+     "why": "The poem takes bold, surreal risks with vivid specificity and a unique voice, but it barely engages with the ocean as the brief requested."
+    }
+   }
+  },
+  {
+   "case": 2,
+   "fails": [],
+   "absolute": {
+    "generic": {
+     "originality": 2,
+     "specificity": 2,
+     "distinctiveness": 2,
+     "coherence": 5,
+     "task_alignment": 4,
+     "creative_risk": 1,
+     "why": "The response is a generic, safe take on a household sponge ad with no unexpected ideas or distinctive voice, though it meets the brief's basic requirements."
+    },
+    "distinctive": {
+     "originality": 5,
+     "specificity": 5,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 4,
+     "why": "The response transforms a mundane object into a poignant, memorable narrative with unexpected emotional depth and sharp, concrete details."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 2,
+     "distinctiveness": 5,
+     "coherence": 2,
+     "task_alignment": 1,
+     "creative_risk": 5,
+     "why": "The response is wildly original and distinctive but largely ignores the brief to advertise an ordinary household object, sacrificing coherence and task alignment for surreal creative risk."
+    }
+   }
+  }
+ ],
+ "openai/gpt-5.4-mini": [
+  {
+   "case": 0,
+   "fails": [
+    "order1: offtask was not beaten by generic on task (offtask)"
+   ],
+   "absolute": {
+    "generic": {
+     "originality": 1,
+     "specificity": 1,
+     "distinctiveness": 1,
+     "coherence": 5,
+     "task_alignment": 2,
+     "creative_risk": 1,
+     "why": "The response follows the format, but the names are highly generic, familiar, and similar to obvious existing app-name patterns, with little memorability or inventive distinction."
+    },
+    "distinctive": {
+     "originality": 4,
+     "specificity": 3,
+     "distinctiveness": 4,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 3,
+     "why": "The names are short, memorable, and mostly unexpected, with a slightly literary/quirky sensibility that fits a Mac app, though they lean more evocative than explicitly app-cleaning specific."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 1,
+     "distinctiveness": 4,
+     "coherence": 5,
+     "task_alignment": 4,
+     "creative_risk": 5,
+     "why": "The names are highly unusual and memorable, but they don\u2019t clearly signal a Mac cleaning app, so the brief is only partially met."
+    }
+   }
+  },
+  {
+   "case": 1,
+   "fails": [
+    "order1: offtask was not beaten by generic on task (offtask)"
+   ],
+   "absolute": {
+    "generic": {
+     "originality": 1,
+     "specificity": 1,
+     "distinctiveness": 1,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "It clearly satisfies the prompt with a coherent poem, but it uses very familiar ocean imagery and stock phrasing with little originality or voice."
+    },
+    "distinctive": {
+     "originality": 4,
+     "specificity": 4,
+     "distinctiveness": 4,
+     "coherence": 5,
+     "task_alignment": 3,
+     "creative_risk": 3,
+     "why": "It\u2019s a poem with an oblique, memorable ocean image and concrete domestic details, but it only loosely addresses the ocean itself, leaning more toward a family scene than the brief\u2019s direct subject."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 4,
+     "distinctiveness": 5,
+     "coherence": 3,
+     "task_alignment": 1,
+     "creative_risk": 5,
+     "why": "The language is vivid and unusually inventive, but it does not actually write about the ocean, instead offering surreal non-ocean imagery with a strong, distinctive voice."
+    }
+   }
+  },
+  {
+   "case": 2,
+   "fails": [],
+   "absolute": {
+    "generic": {
+     "originality": 1,
+     "specificity": 1,
+     "distinctiveness": 1,
+     "coherence": 5,
+     "task_alignment": 2,
+     "creative_risk": 1,
+     "why": "It is a generic ad for a sponge-like product, with stock promotional language and little concrete detail, and it does not convincingly advertise an ordinary household object in a distinctive or creative way."
+    },
+    "distinctive": {
+     "originality": 4,
+     "specificity": 4,
+     "distinctiveness": 4,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 4,
+     "why": "It turns a mundane spoon into a sly, memorable luxury-object ad with concrete details and a distinct voice, while staying clear and on-brief."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 1,
+     "distinctiveness": 5,
+     "coherence": 2,
+     "task_alignment": 1,
+     "creative_risk": 5,
+     "why": "The writing is highly original and voice-driven, but it is too abstract and surreal to identify or advertise an ordinary household object, so it misses the brief despite its strong stylistic presence."
+    }
+   }
+  }
+ ]
+}

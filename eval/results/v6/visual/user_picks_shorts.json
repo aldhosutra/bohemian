@@ -1,0 +1,14 @@
+{
+ "picks": {
+  "onion/DeepSeek": "RRT",
+  "onion/Haiku": "F4T",
+  "sleep/DeepSeek": "BWP",
+  "sleep/Haiku": "5TC"
+ },
+ "decoded": {
+  "onion/DeepSeek": "onion/deepseek/deepseek-v4.1-flash/bohemian_v4b:0",
+  "onion/Haiku": "onion/anthropic/claude-haiku-5.5/antialgorithm:0",
+  "sleep/DeepSeek": "sleep/deepseek/deepseek-v4.1-flash/bohemian_v4b:0",
+  "sleep/Haiku": "sleep/anthropic/claude-haiku-5.5/bohemian_v4b:0"
+ }
+}

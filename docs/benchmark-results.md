@@ -1,6 +1,6 @@
 # Benchmark results
 
-*Run 2026-11-23. Method: [`evaluation.md`](evaluation.md). Raw data: `eval/results/{v1,v2,v3,v4}/`. Per-run reports: `report_bohemian_{all,test,dev}.md`. Total API spend for all of it: **USD 3.55**.*
+*Run 2026-11-23. Method: [`evaluation.md`](evaluation.md). Raw data: `eval/results/{v1,v2,v3,v4,v5,v6}/`. Per-run reports: `report_bohemian_{all,test,dev}.md`. Total API spend for all of it: **USD 4.74**.*
 
 ## Summary
 
@@ -13,7 +13,7 @@ The numbered findings below are for v3, the version benchmarked first. On 42 hel
 3. **Costs:** Bohemian misses hard length limits more often than baseline (89.8% vs 94.0% constraint pass), and its outputs are 20% longer. Judges favor longer outputs, which inflates part of the preference win. In length-matched pairs it still beats baseline (70%) and still loses to the one-liner (33%).
 4. **Fiction is the weak category.** Against baseline, Bohemian's flash fiction is preferred only 42% of the time.
 5. **Bohemian vs Antialgorithm (the skill it builds on): no clear winner, different strengths.** Head-to-head, the cheap judges preferred Bohemian 59% [52–65]; the stronger judge called it even (52%, n=40). Against the same references, judges rated Antialgorithm lower than Bohemian (vs baseline 61% vs 73% prefer, with task fit dropping to 43%; vs the one-liner 27% vs 37%; stronger judge 38% vs 55%). But Antialgorithm wins every judge-free originality measure: far fewer clichés, further from the obvious answer, more varied, and 20% shorter. Details below.
-6. **No human evaluation has been run.** Every judgment above comes from LLM judges or automatic metrics. The blind human-review kit is built and tested; see "Human evaluation" below.
+6. **Human evaluation is limited to one rater's blind picks** on posters and Shorts (see "Visual tests and v6" below): v4b 12, Antialgorithm 5, no skill 2, other versions 1, over 20 sets. Every text judgment above comes from LLM judges or automatic metrics. The 40-pair text review kit is built and tested but not run.
 
 The honest bottom line: Bohemian reliably makes a model's creative output less predictable, less clichéd and more distinctive than default prompting, at the same task fit and coherence. Whether it beats a well-phrased one-line instruction is **not established**. The cheap judges say no, the stronger judge says roughly even, and no humans have weighed in.
 
@@ -218,6 +218,24 @@ Run `eval/results/v4/`, reusing the baseline, one-liner and Antialgorithm output
 
 **Other observations:** Haiku wrote its plan in 92 of 162 v4b outputs, more than in any earlier version. Weakest categories vs baseline: character (39% prefer), fiction (40%), poetry (52%). Short stories now miss length limits more than baseline (67% vs 92%).
 
+## v5: tail pick (not shipped)
+
+Run `eval/results/v5/`. v5 adds to v4b a seed step, five candidate directions with an estimated chance that a typical model would write each (dropping any above 10%), and a names rule (write the first three names that come to mind, use none). Bar fixed in advance in `docs/devlog.md`.
+
+| test split | Antialgorithm | v4b | v5 |
+|---|---|---|---|
+| input tokens (DeepSeek / Haiku) | 2,422 / 3,236 | 1,624 / 2,318 | 1,719 / 2,437 |
+| constraint pass | 0.884 | 0.949 | 0.926 |
+| typicality | **0.549** | 0.582 | 0.571 |
+| semantic diversity | 0.323 | 0.319 | **0.335** |
+| cross-model similarity | 0.618 | 0.638 | 0.619 |
+| clichés /100 words (all) | **0.026** | 0.179 | 0.190 |
+| vs Antialgorithm, cheap judges: prefer / original / task | — | 57% / 50% / 50% | 58.5% / 55.9% / 54.0% |
+| vs Antialgorithm, `gpt-5.4-mini` prefer | — | 48% (n=40) | **46%** (n=120) |
+| vs Antialgorithm, `gemini-3.1-flash-lite` prefer | — | — | **40%** (n=120) |
+
+Result: the bar is not met. The cheap judges favour v5 and, for the first time, rate it more original than Antialgorithm, but both stronger judges prefer Antialgorithm (strongest on character, fiction and positioning tasks, where v5 reads "more playful and distinctive but awkward or off-brief"). Judge-free, v5 ties Antialgorithm on diversity and convergence and trails it on typicality and clichés. `mistral-large-2512` failed the judge self-test (it preferred nonsense names) and was not used.
+
 ## Known measurement problems
 
 - **Length bias.** v3 vs baseline, by relative length of the pair: Bohemian longer by >10% → prefer 81% (n=262); similar length → 70% (n=150); Bohemian shorter → 54% (n=92). Against the one-liner: 54% / 33% / 19%. Judges were told not to reward length and plainly still do. The length-matched numbers (70% vs baseline, 33% vs one-liner) are the cleanest estimate.
@@ -240,6 +258,26 @@ Run `eval/results/v4/`, reusing the baseline, one-liner and Antialgorithm output
 
 Full texts of fiction-5 are in [`examples.md`](examples.md#failure-case). A recurring pattern: when the brief is a small, emotionally loaded scene, Bohemian's sideways angle reads as less immersive than the direct version.
 
+
+## Visual tests and v6 (not shipped)
+
+Text outputs were hard to compare by eye, so the arms also made SVG posters and playable 30-second HTML Shorts. Antialgorithm got its `visuals.md`. Generators and settings were the same as above. One rater picked one piece per set, blind, from a shuffled wall.
+
+| Test | Sets | v4b | Antialgorithm | No skill | Other |
+|---|---|---|---|---|---|
+| Posters round 1 (library, jazz) | 4 | 2 | 1 | 0 | v5 1 |
+| Posters round 2 (6 new briefs) | 12 | 7 | 3 | 2 | v6 0 |
+| Shorts (onions, sleep; brief asks for virality) | 4 | 3 | 1 | — | — |
+
+**v6**, "great first, then stands out", was built from v4b after round 1. It names "the wall" where the piece is seen, scores each direction on Great and Stands out, and adds rules for impact and visual craft. It got none of the rater's 12 round-2 picks. Its posters were loud and blocky. On text it was no better than v4b: on 72 dev pairs, the strong judges preferred Antialgorithm over v6 by 56% (`gpt-5.4-mini`) and 57% (`gemini-3.1-flash-lite`). v4b stays the shipped skill.
+
+Automatic checks on round 2:
+- **Gemini vision judge:** it ranked the no-skill poster first in 26 of 36 rankings, and its first choice matched the rater's in 5 of 36 (chance 4.5). It is not a usable proxy for people.
+- **Text running off the canvas:** 2–3 of 24 posters per arm.
+- **Invalid SVG:** one Antialgorithm poster.
+
+Data: `eval/results/v6/visual/`.
+
 ## Spend
 
 | | USD |
@@ -249,7 +287,9 @@ Full texts of fiction-5 are in [`examples.md`](examples.md#failure-case). A recu
 | Anchors + embeddings | 0.04 |
 | Antialgorithm comparison (generation 0.12, judging and audits 0.33) | 0.45 |
 | v4 / v4b (dev and test generation, judging, audits) | 0.71 |
-| **Total** | **3.55** of the 4.00 cap (raised from 3.00 by the user for v4) |
+| v5 (judge self-tests, dev and test, two 120-pair audits) | 0.63 |
+| Visual tests and v6 (posters, Shorts, vision-judge calibration, v6 dev text run and audits) | 0.56 |
+| **Total** | **4.74** of the 4.85 cap (raised by the user from 3.00) |
 
 ## Human evaluation
 

@@ -73,6 +73,48 @@ Decisions and experimental results, in order. Costs are actual OpenRouter charge
 - Criteria: tokens pass, judge-free gap pass, constraint pass pass; stronger-judge head-to-head fail (even); task fit mixed (cheap judges 45%, stronger judge 65%).
 - Spend so far USD 3.55.
 
+### v5 "tail pick" (not shipped)
+- Approved by the user, with the cap raised to USD 5.00. Changes from v4b (1,162 words, snapshot `eval/results/v5/skill_snapshot_v5/`): a seed step (`seed.py`, or a self-written random string when scripts can't run, after String Seed of Thought); five candidates with an estimated chance that a typical model would write each, striking any above 10% (after Verbalized Sampling); the first three names that come to mind are written down and not used; no named stock nouns in the skill text.
+- 20 new tasks added (`split: fresh`, `fresh-1` to `fresh-20`) before any v5 output existed. Never used for tuning.
+- Bar for "clearly better than Antialgorithm", fixed before v5 judging: on the test split, (1) `gpt-5.4-mini` prefers v5 ≥ 60% with the 95% CI above 50%, on ≥ 120 pairs; (2) `mistral-large-2512` (after passing the judge self-test) agrees, ≥ 55%; (3) typicality, semantic diversity and all-cliché rate at least as good as Antialgorithm's; (4) task fit vs Antialgorithm ≥ 50% (cheap judges); (5) input tokens below Antialgorithm's. Then (6): the same direction on the fresh split for (1), (3) and (4).
+- User approved USD 1.30 more (cap 4.85). Judge self-test: `gpt-5.4-mini` 22/24 (misses only lenient task fit on nonsense), `mistral-large-2512` 20/24 and **rejected** (preferred nonsense names over distinctive ones in one order), `gemini-3.5-flash-lite` unusable (reasoning cannot be turned off), `gemini-3.1-flash-lite` 22/24, used as the second strong judge instead.
+- Dev, v5: typicality 0.520 (Antialgorithm 0.514), diversity 0.360 (0.365), prefer vs Antialgorithm 62%, task 56%. DeepSeek ran the plan in 32/36 outputs (probability estimates in 27); Haiku in 18/36 (9). No revision.
+- Test, v5 (cheap judges): vs Antialgorithm prefer 58.5% [53.4–63.5], original 55.9% [51.0–60.5], task 54.0%; vs baseline prefer 66.8%, task 46.7%; vs one-liner prefer 34.5%. Judge-free vs Antialgorithm: diversity 0.335 vs 0.323 and cross-model similarity 0.619 vs 0.618 (ties), typicality 0.571 vs 0.549 (Antialgorithm better), all-cliché 0.190 vs 0.026 (Antialgorithm better), constraint pass 0.926 vs 0.884 (v5 better). Input tokens 1,719 / 2,437 (Antialgorithm 2,422 / 3,236).
+- Strong-judge audit vs Antialgorithm, 120 pairs each: `gpt-5.4-mini` prefer **46%**, `gemini-3.1-flash-lite` **40%**. Both lowest on character (22%), fiction (27–36%) and positioning (25–38%); judges' reasons: v5 "more playful and distinctive but awkward or off-brief".
+- **Bar not met** (criteria 1, 2 and 3 fail; 4 and 5 pass). Fresh-split run not done: it was to confirm a win, and there is none. Spend USD 4.18.
+
+### Visual tests and v6 "great first, then stands out" (not shipped)
+- Text side-by-sides of YouTube Short scripts were hard to judge by eye, so the user suggested posters. Each arm wrote SVG posters (600×900, self-contained) for 2 briefs, then 6 new ones. Antialgorithm got its `visuals.md` (1,450 words), as its users would. Generators, settings and wrapper as in the benchmark. The artifacts and scripts are in the session scratchpad, not the repo.
+- Round 1 (library late nights, jazz concert; 32 posters): the user's blind picks were Bohemian 3 (v4b twice, v5 once), Antialgorithm 1, baseline 0. Their picks were bold, high-impact pieces. My picks (clever, concept-heavy ones) and the user's agreed on none of the 4 walls.
+- The user's direction: being original is pointless if the result isn't great. They want work that is great and different, so it stands out.
+- Vision judges were calibrated on the user's 4 picks (8 posters per wall, top-3 ranking, 3 shuffles each). `gemini-3.1-flash-lite` put the user's pick first 4/12 times (chance 1.5) and in its top 3 6/12 times. `gpt-5.4-mini` put it first 2/12 times. Both lean toward the plain baseline.
+- v6 (1,360 words, snapshot `eval/results/v6/skill_snapshot_v6/`), built from v4b, not v5:
+  - "Great first, then different" replaces "original and good".
+  - The plan names "the wall": where the piece is met and what the others there look like.
+  - Each direction is scored on Great (would the best in the field ship it; does it land at once) and Stands out (would someone stop on it, next to the others). A direction that fails Great is never picked.
+  - "Make it great" adds impact first and full commitment.
+  - A new section on visual work: one hero element, readable at a distance, a look chosen on purpose, text that fits with a margin.
+  - Facts: invent nothing, in words or pictures, and on posters include every fact the brief gives.
+- Round 2 (6 new briefs, 96 posters: baseline, Antialgorithm, v4b, v6):
+  - Gemini vision judge, first place across 36 rankings: baseline 26, v6 4, v4b 3, Antialgorithm 3. Given its calibration, this is weak evidence.
+  - Text running off the canvas (render-based check): v6 2/24, Antialgorithm 2/23, baseline 3/24, v4b 3/24.
+  - One Antialgorithm poster was invalid SVG.
+  - My read: every skill arm drifts to a dark, monospace, technical-diagram look; v6 is the boldest of them.
+  - The user's blind picks (12 walls, `eval/results/v6/user_picks_round2.json`): **v4b 7, Antialgorithm 3, baseline 2, v6 0.**
+  - Across both rounds the user picked v4b 9/16, Antialgorithm 4, baseline 2, v5 1, v6 0/12.
+  - The user's picks are crafted, warm and illustrated: one drawn image tied to the subject (a river as a map, a sheet-music choir poster, a taped flyer, a race bib), clear hierarchy, often a light paper ground. v6's "full scale, full contrast, commit" made posters loud and blocky, with heavy type and two clipped titles. My reading of round 1 as a taste for "bold impact" was wrong.
+  - Gemini agreed with the user's first choice in 5 of 36 rankings (chance 4.5). It is not a usable proxy for the user's taste.
+  - Outcome: v6 not shipped. The best poster arm by the user's eye is the shipped v4b, which has no visual guidance at all.
+- Playable Shorts (v4b vs Antialgorithm with `visuals.md`): each arm built 30-second 9:16 HTML Shorts with captions, for 2 topics (why onions make you cry; a "90-second rule" for falling back asleep) × 2 models × 2 samples, with a brief that asks for virality. Cost USD 0.05. The user's blind picks (`eval/results/v6/user_picks_shorts.json`): **v4b 3, Antialgorithm 1.** Their picks open with a plain hook that carries a twist ("it isn't the smell", "Don't count sheep. Count to ninety.", "Awake at 3 a.m.?"), and they passed over the most experimental pieces.
+- Decision: v4b restored as the shipped skill; v5 and v6 kept as snapshots.
+- Across the three blind tests the user chose v4b 12 times, Antialgorithm 5, baseline 2, v5 1 and v6 0 (20 sets; one rater, two models, small briefs).
+- Text, dev split (12 tasks):
+  - Cheap judges: v6 vs Antialgorithm prefer 58.3%, task 55.9%; vs baseline prefer 60.4%, task 46.9%. v5 on dev: 61.8% and 67.4%.
+  - Typicality 0.556 (v4b 0.553, v5 0.520, Antialgorithm 0.514). Constraint pass 0.972.
+  - Strong judges vs Antialgorithm (72 dev pairs): `gpt-5.4-mini` 44%, `gemini-3.1-flash-lite` 43%; for comparison, v5 on the same dev pairs with Gemini scored 56%. No text gain over v4b or v5.
+- Note: `metrics.py --run v5` was rerun with the v6 text in place, so the shared and held-out cliché columns in `eval/results/v5/metrics.json` now split by v6's text. The all-cliché rate is unaffected.
+- Cost of this phase USD 0.56 including the Shorts. Total USD 4.74 of the 4.85 cap.
+
 ### Phase 8: docs and packaging
 - README, methodology, architecture, evaluation, results and examples written. The examples are selected by a fixed rule (first test task in six categories, sample 0), not by quality, and include the worst-scoring task.
 - Human review kit built from v3 (40 pairs) and checked with a synthetic rater. **No human ratings collected.**

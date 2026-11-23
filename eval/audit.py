@@ -33,6 +33,7 @@ def main():
     ap.add_argument("--per-ref", type=int, default=60)
     ap.add_argument("--split", default="test")
     ap.add_argument("--seed", type=int, default=11)
+    ap.add_argument("--judge", default=AUDIT_JUDGE, help="audit judge model")
     ap.add_argument("--suffix", default="", help="appended to output file names, e.g. _antialgorithm")
     args = ap.parse_args()
     run = EVAL / "results" / args.run
@@ -60,11 +61,11 @@ def main():
             tid, model, s = c
             a, b = gens[(tid, model, args.treat, s)], gens[(tid, model, ref, s)]
             swapped = flip(tid, model, s, args.treat, ref + "|audit")
-            r = pairwise(AUDIT_JUDGE, tasks[tid], *((b, a) if swapped else (a, b)))
+            r = pairwise(args.judge, tasks[tid], *((b, a) if swapped else (a, b)))
             if r is None:
                 return None
             m = {"A": "ref", "B": "treat"} if swapped else {"A": "treat", "B": "ref"}
-            return {"task_id": tid, "model": model, "sample": s, "ref": ref, "judge": AUDIT_JUDGE,
+            return {"task_id": tid, "model": model, "sample": s, "ref": ref, "judge": args.judge,
                     **{q: ("tie" if r[q] == "tie" else m[r[q]]) for q in QUESTIONS}, "why": r["why"]}
 
         with ThreadPoolExecutor(8) as ex:
@@ -74,7 +75,7 @@ def main():
     cheap = collections.defaultdict(dict)
     for r in pw:
         cheap[(r["task_id"], r["model"], r["sample"], r["ref"])][r["judge"]] = r
-    lines = [f"# Stronger-judge audit: {AUDIT_JUDGE}, run `{args.run}`, {args.split} split\n",
+    lines = [f"# Stronger-judge audit: {args.judge}, run `{args.run}`, {args.split} split\n",
              "Win rate of the treatment on the same pairs, by judge. Ties count half.\n",
              "| reference | n | judge | " + " | ".join(QUESTIONS) + " |", "|---|---|---|" + "---|" * len(QUESTIONS)]
     summary = {}
@@ -83,7 +84,7 @@ def main():
         keys = [(x["task_id"], x["model"], x["sample"], ref) for x in rows]
         judges = sorted({j for k in keys for j in cheap[k]})
         summary[ref] = {}
-        for name, verdicts in [(AUDIT_JUDGE, rows)] + [(j, [cheap[k][j] for k in keys if j in cheap[k]]) for j in judges]:
+        for name, verdicts in [(args.judge, rows)] + [(j, [cheap[k][j] for k in keys if j in cheap[k]]) for j in judges]:
             wr = {q: sum(VAL[v[q]] for v in verdicts) / max(1, len(verdicts)) for q in QUESTIONS}
             summary[ref][name] = wr
             lines.append(f"| {ref} | {len(verdicts)} | {name} | " + " | ".join(f"{100*wr[q]:.0f}%" for q in QUESTIONS) + " |")

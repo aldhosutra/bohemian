@@ -1,0 +1,18 @@
+{
+ "R6U": "onion/deepseek/deepseek-v4.1-flash/antialgorithm:0",
+ "683": "onion/deepseek/deepseek-v4.1-flash/antialgorithm:1",
+ "RRT": "onion/deepseek/deepseek-v4.1-flash/bohemian_v4b:0",
+ "6VG": "onion/deepseek/deepseek-v4.1-flash/bohemian_v4b:1",
+ "F4T": "onion/anthropic/claude-haiku-5.5/antialgorithm:0",
+ "SXW": "onion/anthropic/claude-haiku-5.5/antialgorithm:1",
+ "4FD": "onion/anthropic/claude-haiku-5.5/bohemian_v4b:0",
+ "RKE": "onion/anthropic/claude-haiku-5.5/bohemian_v4b:1",
+ "CU4": "sleep/deepseek/deepseek-v4.1-flash/antialgorithm:0",
+ "7ZX": "sleep/deepseek/deepseek-v4.1-flash/antialgorithm:1",
+ "BWP": "sleep/deepseek/deepseek-v4.1-flash/bohemian_v4b:0",
+ "9RX": "sleep/deepseek/deepseek-v4.1-flash/bohemian_v4b:1",
+ "2WX": "sleep/anthropic/claude-haiku-5.5/antialgorithm:0",
+ "FWA": "sleep/anthropic/claude-haiku-5.5/antialgorithm:1",
+ "5TC": "sleep/anthropic/claude-haiku-5.5/bohemian_v4b:0",
+ "BBG": "sleep/anthropic/claude-haiku-5.5/bohemian_v4b:1"
+}

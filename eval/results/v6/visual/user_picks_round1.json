@@ -1,0 +1,9 @@
+{
+ "note": "Round 1 blind picks by the user (one per wall of 8 posters).",
+ "picks": {
+  "library/claude-haiku-5.5": "antialgorithm:1",
+  "library/deepseek-v4.1-flash": "bohemian_v4b:0",
+  "jazz/claude-haiku-5.5": "bohemian_v4b:1",
+  "jazz/deepseek-v4.1-flash": "bohemian_v5:0"
+ }
+}

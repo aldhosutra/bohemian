@@ -61,13 +61,26 @@ What this shows:
 
 - **Against no skill, Bohemian clearly wins**: judges prefer it, it is less clichéd (−89% on held-out clichés), further from the obvious answer (−21%) and more varied (+71%), at the same length and with the best hard-limit pass rate of any arm.
 - **Against the one-line prompt, it has not been shown to be better.** The cheap judges prefer the one-liner. The stronger judge calls it even. Judge-free, Bohemian is slightly further from the obvious answer, more varied, and keeps limits far better (94.9% vs 87.0%).
-- **Against Antialgorithm, it is a tie on quality and cheaper.** About 30% fewer input tokens. Cheap judges lean Bohemian, the stronger judge calls it even, and Antialgorithm is still a little further from the obvious answer and much lower on clichés.
+- **Against Antialgorithm, LLM judges call it a tie, and it is cheaper.** About 30% fewer input tokens. Cheap judges lean Bohemian, the stronger judge calls it even, and Antialgorithm is still a little further from the obvious answer and much lower on clichés. In one person's blind picks (below) Bohemian won clearly.
 
 **Costs and caveats:**
 
 - Cheap judges rate v4b's task fit below baseline (45%). The stronger judge rates it above (65%).
 - Fiction, character sketches and short poems are its weakest categories (40%, 39% and 52% preferred vs baseline).
-- **No human evaluation has been run.** A blind review kit is included.
+- **Human evaluation is small:** one rater's blind picks on posters and Shorts (below). The 40-pair text review kit has not been run.
+
+## Blind picks by a person
+
+LLM judges disagreed with each other and with people, so we also ran visual tests that a person can judge at a glance. Each arm made SVG posters (8 briefs) and playable 30-second HTML Shorts aimed at virality (2 topics), on the same two models with two samples each. Antialgorithm got its own visual guide (`visuals.md`); Bohemian has no visual guidance. One rater (the project owner) looked at each set unlabelled, in shuffled order, and picked the one they would put up or post.
+
+| Test | Sets | Bohemian v4b | Antialgorithm | No skill | Other Bohemian versions |
+|---|---|---|---|---|---|
+| Posters, round 1 | 4 | 2 | 1 | 0 | v5: 1 |
+| Posters, round 2 | 12 | **7** | 3 | 2 | v6: 0 |
+| Playable Shorts | 4 | **3** | 1 | — | — |
+| **Total** | 20 | **12** | 5 | 2 | 1 |
+
+The picks were crafted, warm pieces built around one image or one twist tied to the subject: a river drawn as the run's map, a sheet-music choir poster, "Don't count sheep. Count to ninety." Later versions that pushed harder for surprise (v5) or for loudness (v6) lost. A vision judge (Gemini 3.1 Flash Lite) matched the rater's first choice no more often than chance, so these picks are the only quality evidence here that comes from a person. It is one rater, two cheap models and short briefs. Data and scripts: [`eval/results/v6/visual/`](eval/results/v6/visual/).
 
 ## Examples
 
@@ -159,7 +172,7 @@ Tests: `python3 -m unittest discover -s tests`.
 ## Known limitations
 
 - **Not better than a strong one-line instruction** on the evidence so far (see above), and not more original than Antialgorithm by the judge-free measures.
-- **No human ratings.** All quality evidence comes from LLM judges, which here favored longer and more ornamental text and showed position bias.
+- **Almost no human ratings.** Apart from one rater's blind picks on posters and Shorts, all quality evidence comes from LLM judges, which here favored longer and more ornamental text and showed position bias.
 - **Cheap generators only.** Results are for two small, fast models with thinking off. Larger models and agents with extended thinking are untested.
 - **The method depends on planning.** With thinking off, Haiku wrote its plan in 92 of 162 v4b outputs. DeepSeek always planned.
 - **Fiction and character work** are the weakest categories.
