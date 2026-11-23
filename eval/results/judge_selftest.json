@@ -1,0 +1,208 @@
+{
+ "google/gemini-2.5-flash-lite": [
+  {
+   "case": 0,
+   "fails": [],
+   "absolute": {
+    "generic": {
+     "originality": 1,
+     "specificity": 1,
+     "distinctiveness": 1,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "The response provides five names as requested, but they are all very generic and lack originality or distinctiveness."
+    },
+    "distinctive": {
+     "originality": 4,
+     "specificity": 3,
+     "distinctiveness": 4,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 3,
+     "why": "The names are creative and evocative, hinting at cleaning and organization without being literal, and they fulfill all aspects of the brief."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 1,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 1,
+     "creative_risk": 5,
+     "why": "The response provides five highly original and distinctive names that are completely unaligned with the brief's request for a Mac cleaning application name."
+    }
+   }
+  },
+  {
+   "case": 1,
+   "fails": [
+    "order0: offtask was not beaten by generic on task (tie)"
+   ],
+   "absolute": {
+    "generic": {
+     "originality": 1,
+     "specificity": 1,
+     "distinctiveness": 1,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "This poem uses very common ocean imagery and phrasing, making it predictable and lacking a unique voice."
+    },
+    "distinctive": {
+     "originality": 5,
+     "specificity": 5,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 5,
+     "why": "This poem subverts the typical ocean theme by focusing on a personal, melancholic memory rather than grand descriptions, using specific details to create a unique and evocative mood."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 5,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 3,
+     "creative_risk": 5,
+     "why": "The response is highly original, specific, distinctive, and coherent, but it completely ignores the prompt to write a poem about the ocean."
+    }
+   }
+  },
+  {
+   "case": 2,
+   "fails": [],
+   "absolute": {
+    "generic": {
+     "originality": 1,
+     "specificity": 1,
+     "distinctiveness": 1,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "The response is a generic advertisement for a sponge, lacking any unique qualities or specific details."
+    },
+    "distinctive": {
+     "originality": 4,
+     "specificity": 5,
+     "distinctiveness": 4,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 3,
+     "why": "This ad takes a mundane object and imbues it with unexpected personality and history, making it feel unique and desirable."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 1,
+     "distinctiveness": 5,
+     "coherence": 1,
+     "task_alignment": 1,
+     "creative_risk": 5,
+     "why": "This response is highly original, distinctive, and takes creative risks, but it completely ignores the brief's requirement to advertise an ordinary household object, making it incoherent and misaligned with the task."
+    }
+   }
+  }
+ ],
+ "openai/gpt-4o-mini": [
+  {
+   "case": 0,
+   "fails": [
+    "absolute: task_alignment offtask 5 >= distinctive 5"
+   ],
+   "absolute": {
+    "generic": {
+     "originality": 2,
+     "specificity": 2,
+     "distinctiveness": 2,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "The names are mostly generic and lack originality, with no standout creativity or unique branding."
+    },
+    "distinctive": {
+     "originality": 4,
+     "specificity": 3,
+     "distinctiveness": 4,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 3,
+     "why": "The names are creative and distinct, fitting the brief well, though some options are less directly related to cleaning."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 1,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 5,
+     "why": "The names are highly original and distinctive, showcasing a unique voice while perfectly aligning with the brief's requirement for memorable options."
+    }
+   }
+  },
+  {
+   "case": 1,
+   "fails": [],
+   "absolute": {
+    "generic": {
+     "originality": 2,
+     "specificity": 2,
+     "distinctiveness": 2,
+     "coherence": 4,
+     "task_alignment": 5,
+     "creative_risk": 1,
+     "why": "The poem uses familiar imagery and themes about the ocean without introducing unique perspectives or details."
+    },
+    "distinctive": {
+     "originality": 5,
+     "specificity": 4,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 4,
+     "why": "The poem presents a unique perspective on the ocean through personal narrative and vivid imagery, while maintaining clarity and alignment with the brief."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 3,
+     "distinctiveness": 5,
+     "coherence": 4,
+     "task_alignment": 3,
+     "creative_risk": 5,
+     "why": "The poem presents highly original and distinctive imagery, though its connection to the ocean is abstract and somewhat indirect."
+    }
+   }
+  },
+  {
+   "case": 2,
+   "fails": [],
+   "absolute": {
+    "generic": {
+     "originality": 2,
+     "specificity": 2,
+     "distinctiveness": 2,
+     "coherence": 4,
+     "task_alignment": 4,
+     "creative_risk": 2,
+     "why": "The response uses common phrases and lacks unique details, making it feel generic despite being coherent and aligned with the brief."
+    },
+    "distinctive": {
+     "originality": 5,
+     "specificity": 5,
+     "distinctiveness": 5,
+     "coherence": 5,
+     "task_alignment": 5,
+     "creative_risk": 5,
+     "why": "This response creatively elevates a mundane object with vivid imagery and personal anecdotes, making it both engaging and memorable."
+    },
+    "offtask": {
+     "originality": 5,
+     "specificity": 1,
+     "distinctiveness": 5,
+     "coherence": 2,
+     "task_alignment": 1,
+     "creative_risk": 5,
+     "why": "The response showcases high originality and distinctiveness with surreal imagery, but it lacks specificity and coherence, failing to align with the brief's requirement for an advertisement."
+    }
+   }
+  }
+ ]
+}

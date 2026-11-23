@@ -1,0 +1,1077 @@
+{
+ "run": "v3",
+ "split": "test",
+ "n_tasks": 42,
+ "arms": [
+  "baseline",
+  "oneliner",
+  "antialgorithm",
+  "bohemian"
+ ],
+ "models": [
+  "anthropic/claude-haiku-5.5",
+  "deepseek/deepseek-v4.1-flash"
+ ],
+ "judges": [
+  "google/gemini-2.5-flash-lite",
+  "openai/gpt-4o-mini"
+ ],
+ "n_generations": 1008,
+ "pairwise": {
+  "baseline": {
+   "original": {
+    "win_rate": 0.6517857142857143,
+    "ci": [
+     0.5803571428571429,
+     0.7232142857142856
+    ],
+    "W": 327,
+    "T": 3,
+    "L": 174,
+    "tasks_above": 25,
+    "tasks_below": 9,
+    "p": 0.00904118549078703
+   },
+   "unpredictable": {
+    "win_rate": 0.822420634920635,
+    "ci": [
+     0.7619047619047619,
+     0.8799603174603176
+    ],
+    "W": 412,
+    "T": 5,
+    "L": 87,
+    "tasks_above": 37,
+    "tasks_below": 2,
+    "p": 2.841261448338628e-09
+   },
+   "distinctive": {
+    "win_rate": 0.798611111111111,
+    "ci": [
+     0.7331349206349207,
+     0.8581349206349206
+    ],
+    "W": 401,
+    "T": 3,
+    "L": 100,
+    "tasks_above": 36,
+    "tasks_below": 3,
+    "p": 3.608874976634979e-08
+   },
+   "prefer": {
+    "win_rate": 0.7271825396825398,
+    "ci": [
+     0.6517857142857142,
+     0.8015873015873015
+    ],
+    "W": 365,
+    "T": 3,
+    "L": 136,
+    "tasks_above": 33,
+    "tasks_below": 6,
+    "p": 1.429926123819314e-05
+   },
+   "task": {
+    "win_rate": 0.5267857142857142,
+    "ci": [
+     0.4831349206349206,
+     0.5674603174603174
+    ],
+    "W": 203,
+    "T": 125,
+    "L": 176,
+    "tasks_above": 21,
+    "tasks_below": 16,
+    "p": 0.5113757815852296
+   }
+  },
+  "oneliner": {
+   "original": {
+    "win_rate": 0.43650793650793646,
+    "ci": [
+     0.38392857142857145,
+     0.4880952380952381
+    ],
+    "W": 219,
+    "T": 2,
+    "L": 283,
+    "tasks_above": 12,
+    "tasks_below": 21,
+    "p": 0.16275565745308995
+   },
+   "unpredictable": {
+    "win_rate": 0.35317460317460314,
+    "ci": [
+     0.2946428571428571,
+     0.41369047619047616
+    ],
+    "W": 177,
+    "T": 2,
+    "L": 325,
+    "tasks_above": 9,
+    "tasks_below": 27,
+    "p": 0.00393317302223295
+   },
+   "distinctive": {
+    "win_rate": 0.378968253968254,
+    "ci": [
+     0.3134920634920635,
+     0.4444692460317457
+    ],
+    "W": 190,
+    "T": 2,
+    "L": 312,
+    "tasks_above": 9,
+    "tasks_below": 26,
+    "p": 0.0059881205670535564
+   },
+   "prefer": {
+    "win_rate": 0.3680555555555556,
+    "ci": [
+     0.3055555555555555,
+     0.4335317460317461
+    ],
+    "W": 185,
+    "T": 1,
+    "L": 318,
+    "tasks_above": 8,
+    "tasks_below": 30,
+    "p": 0.0004719867429230362
+   },
+   "task": {
+    "win_rate": 0.41567460317460314,
+    "ci": [
+     0.36111111111111116,
+     0.4692460317460318
+    ],
+    "W": 154,
+    "T": 111,
+    "L": 239,
+    "tasks_above": 10,
+    "tasks_below": 28,
+    "p": 0.0050976432976312935
+   }
+  },
+  "antialgorithm": {
+   "original": {
+    "win_rate": 0.5228174603174602,
+    "ci": [
+     0.46130952380952384,
+     0.5833333333333334
+    ],
+    "W": 263,
+    "T": 1,
+    "L": 240,
+    "tasks_above": 22,
+    "tasks_below": 14,
+    "p": 0.2429849540349096
+   },
+   "unpredictable": {
+    "win_rate": 0.5426587301587301,
+    "ci": [
+     0.4880952380952381,
+     0.5982142857142858
+    ],
+    "W": 273,
+    "T": 1,
+    "L": 230,
+    "tasks_above": 23,
+    "tasks_below": 15,
+    "p": 0.2558750795433298
+   },
+   "distinctive": {
+    "win_rate": 0.5515873015873015,
+    "ci": [
+     0.4851190476190476,
+     0.6170634920634921
+    ],
+    "W": 277,
+    "T": 2,
+    "L": 225,
+    "tasks_above": 25,
+    "tasks_below": 15,
+    "p": 0.1538599441628321
+   },
+   "prefer": {
+    "win_rate": 0.5882936507936508,
+    "ci": [
+     0.5208333333333334,
+     0.6527777777777777
+    ],
+    "W": 296,
+    "T": 1,
+    "L": 207,
+    "tasks_above": 25,
+    "tasks_below": 11,
+    "p": 0.028816719655878842
+   },
+   "task": {
+    "win_rate": 0.540674603174603,
+    "ci": [
+     0.4880952380952381,
+     0.5912698412698413
+    ],
+    "W": 223,
+    "T": 99,
+    "L": 182,
+    "tasks_above": 24,
+    "tasks_below": 15,
+    "p": 0.19959086691960692
+   }
+  }
+ },
+ "agreement": {
+  "original": {
+   "agree": 0.8690476190476191,
+   "kappa": 0.7390604026845639,
+   "n": 756
+  },
+  "unpredictable": {
+   "agree": 0.6931216931216931,
+   "kappa": 0.3804942143856229,
+   "n": 756
+  },
+  "distinctive": {
+   "agree": 0.7301587301587301,
+   "kappa": 0.45316261802864233,
+   "n": 756
+  },
+  "prefer": {
+   "agree": 0.7394179894179894,
+   "kappa": 0.47594952743548424,
+   "n": 756
+  },
+  "task": {
+   "agree": 0.4576719576719577,
+   "kappa": 0.2352841039457031,
+   "n": 756
+  }
+ },
+ "absolute": {
+  "originality": {
+   "means": {
+    "baseline": 3.202380952380953,
+    "oneliner": 4.123015873015873,
+    "antialgorithm": 4.0396825396825395,
+    "bohemian": 4.055555555555555
+   },
+   "vs_baseline": {
+    "delta": 0.8531746031746033,
+    "ci": [
+     0.7261904761904763,
+     0.9841269841269842
+    ],
+    "pct": 26.64188351920694,
+    "better": 41,
+    "worse": 0,
+    "p": 9.094947017729282e-13
+   },
+   "vs_oneliner": {
+    "delta": -0.06746031746031747,
+    "ci": [
+     -0.1388888888888888,
+     0.003968253968253975
+    ],
+    "pct": -1.6361886429258907,
+    "better": 11,
+    "worse": 20,
+    "p": 0.14961278438568115
+   },
+   "vs_antialgorithm": {
+    "delta": 0.015873015873015858,
+    "ci": [
+     -0.07142857142857147,
+     0.10317460317460317
+    ],
+    "pct": 0.3929273084479368,
+    "better": 17,
+    "worse": 15,
+    "p": 0.860050065908581
+   }
+  },
+  "specificity": {
+   "means": {
+    "baseline": 3.9007936507936503,
+    "oneliner": 4.563492063492064,
+    "antialgorithm": 4.583333333333333,
+    "bohemian": 4.583333333333333
+   },
+   "vs_baseline": {
+    "delta": 0.6825396825396826,
+    "ci": [
+     0.5277777777777778,
+     0.8412698412698413
+    ],
+    "pct": 17.49745676500509,
+    "better": 36,
+    "worse": 0,
+    "p": 2.9103830456733704e-11
+   },
+   "vs_oneliner": {
+    "delta": 0.01984126984126989,
+    "ci": [
+     -0.07142857142857137,
+     0.09920634920634927
+    ],
+    "pct": 0.43478260869565316,
+    "better": 18,
+    "worse": 7,
+    "p": 0.043285250663757324
+   },
+   "vs_antialgorithm": {
+    "delta": 3.172065784643304e-17,
+    "ci": [
+     -0.09523809523809519,
+     0.10714285714285716
+    ],
+    "pct": 6.920870802858119e-16,
+    "better": 12,
+    "worse": 14,
+    "p": 0.8450189828872681
+   }
+  },
+  "distinctiveness": {
+   "means": {
+    "baseline": 3.277777777777778,
+    "oneliner": 4.178571428571429,
+    "antialgorithm": 4.126984126984127,
+    "bohemian": 4.162698412698413
+   },
+   "vs_baseline": {
+    "delta": 0.8849206349206349,
+    "ci": [
+     0.7341269841269841,
+     1.0357142857142858
+    ],
+    "pct": 26.997578692493946,
+    "better": 40,
+    "worse": 0,
+    "p": 1.8189894035458565e-12
+   },
+   "vs_oneliner": {
+    "delta": -0.0158730158730159,
+    "ci": [
+     -0.08730158730158728,
+     0.0555555555555555
+    ],
+    "pct": -0.37986704653371384,
+    "better": 13,
+    "worse": 17,
+    "p": 0.584664711728692
+   },
+   "vs_antialgorithm": {
+    "delta": 0.035714285714285685,
+    "ci": [
+     -0.04761904761904766,
+     0.12698412698412692
+    ],
+    "pct": 0.8653846153846145,
+    "better": 15,
+    "worse": 16,
+    "p": 1.0
+   }
+  },
+  "coherence": {
+   "means": {
+    "baseline": 5.0,
+    "oneliner": 5.0,
+    "antialgorithm": 5.0,
+    "bohemian": 5.0
+   },
+   "vs_baseline": {
+    "delta": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "pct": 0.0,
+    "better": 0,
+    "worse": 0,
+    "p": 1.0
+   },
+   "vs_oneliner": {
+    "delta": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "pct": 0.0,
+    "better": 0,
+    "worse": 0,
+    "p": 1.0
+   },
+   "vs_antialgorithm": {
+    "delta": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "pct": 0.0,
+    "better": 0,
+    "worse": 0,
+    "p": 1.0
+   }
+  },
+  "task_alignment": {
+   "means": {
+    "baseline": 5.0,
+    "oneliner": 5.0,
+    "antialgorithm": 4.988095238095238,
+    "bohemian": 4.992063492063492
+   },
+   "vs_baseline": {
+    "delta": -0.007936507936507929,
+    "ci": [
+     -0.023809523809523787,
+     0.0
+    ],
+    "pct": -0.15873015873015858,
+    "better": 0,
+    "worse": 1,
+    "p": 1.0
+   },
+   "vs_oneliner": {
+    "delta": -0.007936507936507929,
+    "ci": [
+     -0.023809523809523787,
+     0.0
+    ],
+    "pct": -0.15873015873015858,
+    "better": 0,
+    "worse": 1,
+    "p": 1.0
+   },
+   "vs_antialgorithm": {
+    "delta": 0.003968253968253975,
+    "ci": [
+     -0.011904761904761862,
+     0.023809523809523787
+    ],
+    "pct": 0.07955449482895798,
+    "better": 1,
+    "worse": 1,
+    "p": 1.0
+   }
+  },
+  "creative_risk": {
+   "means": {
+    "baseline": 2.3373015873015874,
+    "oneliner": 3.3452380952380953,
+    "antialgorithm": 3.313492063492064,
+    "bohemian": 3.313492063492064
+   },
+   "vs_baseline": {
+    "delta": 0.976190476190476,
+    "ci": [
+     0.7857142857142857,
+     1.1706349206349207
+    ],
+    "pct": 41.76570458404074,
+    "better": 38,
+    "worse": 0,
+    "p": 7.275957614183426e-12
+   },
+   "vs_oneliner": {
+    "delta": -0.031746031746031717,
+    "ci": [
+     -0.1349206349206349,
+     0.07142857142857147
+    ],
+    "pct": -0.9489916963226563,
+    "better": 16,
+    "worse": 17,
+    "p": 1.0
+   },
+   "vs_antialgorithm": {
+    "delta": -4.229421046191072e-17,
+    "ci": [
+     -0.1468253968253969,
+     0.14285714285714285
+    ],
+    "pct": -1.2764240762157486e-15,
+    "better": 19,
+    "worse": 18,
+    "p": 1.0
+   }
+  }
+ },
+ "deterministic": {
+  "words": {
+   "means": {
+    "baseline": 169.17063492063494,
+    "oneliner": 194.12698412698415,
+    "antialgorithm": 169.09920634920633,
+    "bohemian": 203.0198412698413
+   },
+   "vs_baseline": {
+    "delta": 33.84920634920635,
+    "ci": [
+     19.41666666666667,
+     50.4248015873016
+    ],
+    "pct": 20.008913701297175,
+    "up": 35,
+    "down": 6,
+    "p": 4.873598300036974e-06
+   },
+   "vs_oneliner": {
+    "delta": 8.892857142857146,
+    "ci": [
+     -2.940575396825395,
+     20.488194444444442
+    ],
+    "pct": 4.580948487326248,
+    "up": 25,
+    "down": 16,
+    "p": 0.21102359760880063
+   },
+   "vs_antialgorithm": {
+    "delta": 33.92063492063492,
+    "ci": [
+     12.019642857142857,
+     60.9610119047619
+    ],
+    "pct": 20.05960622345294,
+    "up": 22,
+    "down": 20,
+    "p": 0.8776143287523155
+   }
+  },
+  "constraint_pass_num": {
+   "means": {
+    "baseline": 0.9398148148148149,
+    "oneliner": 0.8703703703703703,
+    "antialgorithm": 0.8842592592592592,
+    "bohemian": 0.8981481481481483
+   },
+   "vs_baseline": {
+    "delta": -0.04166666666666666,
+    "ci": [
+     -0.08333333333333331,
+     -0.004629629629629626
+    ],
+    "pct": -4.433497536945812,
+    "up": 3,
+    "down": 10,
+    "p": 0.09228515625
+   },
+   "vs_oneliner": {
+    "delta": 0.027777777777777776,
+    "ci": [
+     -0.027777777777777773,
+     0.08333333333333334
+    ],
+    "pct": 3.1914893617021276,
+    "up": 8,
+    "down": 7,
+    "p": 1.0
+   },
+   "vs_antialgorithm": {
+    "delta": 0.013888888888888886,
+    "ci": [
+     -0.03703703703703704,
+     0.06018518518518518
+    ],
+    "pct": 1.5706806282722512,
+    "up": 11,
+    "down": 6,
+    "p": 0.332305908203125
+   }
+  },
+  "cliche_per100": {
+   "means": {
+    "baseline": 0.4373169831843223,
+    "oneliner": 0.279372572154067,
+    "antialgorithm": 0.026099985538882448,
+    "bohemian": 0.20507891727566413
+   },
+   "vs_baseline": {
+    "delta": -0.23223806590865828,
+    "ci": [
+     -0.3652735976614005,
+     -0.12229992834994673
+    ],
+    "pct": -53.1052016817681,
+    "up": 3,
+    "down": 24,
+    "p": 4.9233436584472656e-05
+   },
+   "vs_oneliner": {
+    "delta": -0.07429365487840295,
+    "ci": [
+     -0.21692574509980966,
+     0.02708686914155057
+    ],
+    "pct": -26.59303821616098,
+    "up": 13,
+    "down": 14,
+    "p": 1.0
+   },
+   "vs_antialgorithm": {
+    "delta": 0.17897893173678164,
+    "ci": [
+     0.007929643830678451,
+     0.48568224211722133
+    ],
+    "pct": 685.7434134212366,
+    "up": 11,
+    "down": 6,
+    "p": 0.332305908203125
+   }
+  },
+  "cliche_shared_per100": {
+   "means": {
+    "baseline": 0.0949449540380153,
+    "oneliner": 0.05391894012830441,
+    "antialgorithm": 0.018963205302347404,
+    "bohemian": 0.03389134857477401
+   },
+   "vs_baseline": {
+    "delta": -0.06105360546324129,
+    "ci": [
+     -0.1346569369974471,
+     -0.0013179576929945142
+    ],
+    "pct": -64.30421298513227,
+    "up": 7,
+    "down": 10,
+    "p": 0.629058837890625
+   },
+   "vs_oneliner": {
+    "delta": -0.020027591553530406,
+    "ci": [
+     -0.056329183254420885,
+     0.014101304561135512
+    ],
+    "pct": -37.14388952355733,
+    "up": 9,
+    "down": 12,
+    "p": 0.6636238098144531
+   },
+   "vs_antialgorithm": {
+    "delta": 0.014928143272426597,
+    "ci": [
+     -0.008699729287008642,
+     0.04100410867322677
+    ],
+    "pct": 78.72162450605691,
+    "up": 7,
+    "down": 5,
+    "p": 0.7744140625
+   }
+  },
+  "cliche_heldout_per100": {
+   "means": {
+    "baseline": 0.3423720291463071,
+    "oneliner": 0.2254536320257626,
+    "antialgorithm": 0.007136780236535043,
+    "bohemian": 0.17118756870089008
+   },
+   "vs_baseline": {
+    "delta": -0.171184460445417,
+    "ci": [
+     -0.29306320120335916,
+     -0.08057085318991626
+    ],
+    "pct": -49.99954607047181,
+    "up": 0,
+    "down": 20,
+    "p": 1.9073486328125e-06
+   },
+   "vs_oneliner": {
+    "delta": -0.05426606332487255,
+    "ci": [
+     -0.1898200635771251,
+     0.03864068802090067
+    ],
+    "pct": -24.069722380285967,
+    "up": 4,
+    "down": 8,
+    "p": 0.3876953125
+   },
+   "vs_antialgorithm": {
+    "delta": 0.16405078846435503,
+    "ci": [
+     0.00241514951683789,
+     0.4694193304579912
+    ],
+    "pct": 2298.666667981959,
+    "up": 5,
+    "down": 1,
+    "p": 0.21875
+   }
+  },
+  "typicality": {
+   "means": {
+    "baseline": 0.7366984551181064,
+    "oneliner": 0.6262092264212077,
+    "antialgorithm": 0.5487639655590832,
+    "bohemian": 0.6054887191864416
+   },
+   "vs_baseline": {
+    "delta": -0.13120973593166468,
+    "ci": [
+     -0.14773234731044604,
+     -0.1157158931708027
+    ],
+    "pct": -17.810507816339772,
+    "up": 0,
+    "down": 42,
+    "p": 4.547473508864641e-13
+   },
+   "vs_oneliner": {
+    "delta": -0.02072050723476599,
+    "ci": [
+     -0.03310673739952542,
+     -0.008527599511765476
+    ],
+    "pct": -3.308879262795904,
+    "up": 10,
+    "down": 32,
+    "p": 0.0009406740282429382
+   },
+   "vs_antialgorithm": {
+    "delta": 0.05672475362735844,
+    "ci": [
+     0.045164826832133624,
+     0.06893203251869752
+    ],
+    "pct": 10.336821873784478,
+    "up": 41,
+    "down": 1,
+    "p": 1.9554136088117957e-11
+   }
+  },
+  "intra_list_sim": {
+   "means": {
+    "baseline": 0.4279702983887391,
+    "oneliner": 0.35570369354000786,
+    "antialgorithm": 0.3326403152487645,
+    "bohemian": 0.3597737647085244
+   },
+   "vs_baseline": {
+    "delta": -0.06819653368021471,
+    "ci": [
+     -0.12757845412862193,
+     -0.016222051430362008
+    ],
+    "pct": -15.934875372652524,
+    "up": 3,
+    "down": 7,
+    "p": 0.34375
+   },
+   "vs_oneliner": {
+    "delta": 0.004070071168516603,
+    "ci": [
+     -0.013820061253433283,
+     0.0254982556139823
+    ],
+    "pct": 1.1442307860260723,
+    "up": 5,
+    "down": 5,
+    "p": 1.0
+   },
+   "vs_antialgorithm": {
+    "delta": 0.02713344945975992,
+    "ci": [
+     0.006144270981574747,
+     0.04968421218598373
+    ],
+    "pct": 8.156993670315703,
+    "up": 7,
+    "down": 3,
+    "p": 0.34375
+   }
+  },
+  "semantic_diversity": {
+   "means": {
+    "baseline": 0.18675100561750685,
+    "oneliner": 0.2672123149313371,
+    "antialgorithm": 0.3230951886377992,
+    "bohemian": 0.275658570918718
+   },
+   "vs_baseline": {
+    "delta": 0.0889075653012111,
+    "ci": [
+     0.06771303441979817,
+     0.11033354198234635
+    ],
+    "pct": 47.6075429994239,
+    "up": 37,
+    "down": 5,
+    "p": 4.4337048166198656e-07
+   },
+   "vs_oneliner": {
+    "delta": 0.008446255987380805,
+    "ci": [
+     -0.007734393862125415,
+     0.02443710878853212
+    ],
+    "pct": 3.160878266239771,
+    "up": 22,
+    "down": 20,
+    "p": 0.8776143287523155
+   },
+   "vs_antialgorithm": {
+    "delta": -0.0474366177190812,
+    "ci": [
+     -0.0673219090599618,
+     -0.027172543552861854
+    ],
+    "pct": -14.68193256577995,
+    "up": 6,
+    "down": 36,
+    "p": 2.8288777684792876e-06
+   }
+  },
+  "ngram_overlap": {
+   "means": {
+    "baseline": 0.055984550352930075,
+    "oneliner": 0.015171529369828391,
+    "antialgorithm": 0.01192223695204633,
+    "bohemian": 0.016624592736491067
+   },
+   "vs_baseline": {
+    "delta": -0.03935995761643901,
+    "ci": [
+     -0.06717767961713077,
+     -0.01894169074608271
+    ],
+    "pct": -70.30503481462546,
+    "up": 5,
+    "down": 37,
+    "p": 4.4337048166198656e-07
+   },
+   "vs_oneliner": {
+    "delta": 0.001453063366662678,
+    "ci": [
+     -0.0025252882562104605,
+     0.00544449010293257
+    ],
+    "pct": 9.577566844067706,
+    "up": 20,
+    "down": 20,
+    "p": 1.0
+   },
+   "vs_antialgorithm": {
+    "delta": 0.004702355784444741,
+    "ci": [
+     0.0002016081364344019,
+     0.01016945624387853
+    ],
+    "pct": 39.44189167988001,
+    "up": 23,
+    "down": 17,
+    "p": 0.42959050784338615
+   }
+  },
+  "cross_model_sim": {
+   "means": {
+    "baseline": 0.7491600255961669,
+    "oneliner": 0.6797514985689321,
+    "antialgorithm": 0.618021335735168,
+    "bohemian": 0.6476013907959345
+   },
+   "vs_baseline": {
+    "delta": -0.10155863480023236,
+    "ci": [
+     -0.12972830126600784,
+     -0.07464379620785785
+    ],
+    "pct": -13.556333938054687,
+    "up": 4,
+    "down": 38,
+    "p": 5.65314621780999e-08
+   },
+   "vs_oneliner": {
+    "delta": -0.032150107772997615,
+    "ci": [
+     -0.0510092805879013,
+     -0.014584076205707822
+    ],
+    "pct": -4.729685457212323,
+    "up": 14,
+    "down": 28,
+    "p": 0.04355852192384191
+   },
+   "vs_antialgorithm": {
+    "delta": 0.029580055060766424,
+    "ci": [
+     0.01212842139278346,
+     0.0458036022025339
+    ],
+    "pct": 4.7862514367047595,
+    "up": 35,
+    "down": 7,
+    "p": 1.5097200957825407e-05
+   }
+  }
+ },
+ "categories": {
+  "analogy": {
+   "original": 0.5972222222222222,
+   "prefer": 0.7361111111111112,
+   "task": 0.5694444444444444
+  },
+  "brainstorm": {
+   "original": 0.9583333333333334,
+   "prefer": 1.0,
+   "task": 0.6979166666666666
+  },
+  "character": {
+   "original": 0.5277777777777778,
+   "prefer": 0.5277777777777778,
+   "task": 0.5
+  },
+  "fiction": {
+   "original": 0.2916666666666667,
+   "prefer": 0.4166666666666667,
+   "task": 0.3541666666666667
+  },
+  "headlines": {
+   "original": 0.8055555555555556,
+   "prefer": 0.9166666666666666,
+   "task": 0.5694444444444444
+  },
+  "marketing": {
+   "original": 0.8958333333333334,
+   "prefer": 0.8541666666666666,
+   "task": 0.5104166666666666
+  },
+  "naming": {
+   "original": 0.7916666666666666,
+   "prefer": 0.8333333333333334,
+   "task": 0.46875
+  },
+  "poetry": {
+   "original": 0.6666666666666666,
+   "prefer": 0.6666666666666666,
+   "task": 0.5416666666666666
+  },
+  "positioning": {
+   "original": 0.6111111111111112,
+   "prefer": 0.8055555555555556,
+   "task": 0.6111111111111112
+  },
+  "rewrite": {
+   "original": 0.5277777777777778,
+   "prefer": 0.5555555555555556,
+   "task": 0.4722222222222222
+  },
+  "short_story": {
+   "original": 0.6666666666666666,
+   "prefer": 0.6458333333333334,
+   "task": 0.6145833333333334
+  },
+  "story_concept": {
+   "original": 0.3611111111111111,
+   "prefer": 0.75,
+   "task": 0.4027777777777778
+  }
+ },
+ "failures": [
+  {
+   "task": "fiction-5",
+   "prefer": 0.0,
+   "task_win": 0.041666666666666664,
+   "original": 0.0,
+   "judge_reasons": [
+    "Response A establishes a stronger sense of place and character, while Response B feels a bit more generic and less evocative.",
+    "Response A is more evocative and paints a richer picture of the store and its history, fulfilling the brief more comprehensively."
+   ],
+   "constraint_failures": []
+  },
+  {
+   "task": "character-4",
+   "prefer": 0.25,
+   "task_win": 0.4166666666666667,
+   "original": 0.5833333333333334,
+   "judge_reasons": [
+    "Response A feels more fully realized, with a stronger sense of character and a more nuanced portrayal of the mentor-mentee relationship.",
+    "Response B offers a more nuanced and emotionally resonant character, while Response A is a bit too reliant on a single, albeit effective, anecdote."
+   ],
+   "constraint_failures": []
+  },
+  {
+   "task": "rewrite-3",
+   "prefer": 0.3333333333333333,
+   "task_win": 0.4166666666666667,
+   "original": 0.5833333333333334,
+   "judge_reasons": [
+    "Response A is more vivid and less predictable, using stronger imagery and more evocative language to convey Sarah's sadness and memories.",
+    "Response B offers a more vivid and emotionally resonant portrayal of Sarah's feelings, making it less predictable and more distinctive."
+   ],
+   "constraint_failures": [
+    {
+     "max_words": false
+    },
+    {
+     "max_words": false
+    }
+   ]
+  },
+  {
+   "task": "story_concept-2",
+   "prefer": 0.4166666666666667,
+   "task_win": 0.375,
+   "original": 0.3333333333333333,
+   "judge_reasons": [
+    "Response A offers a more original and compelling premise with a stronger emotional core, while Response B's premise, though interesting, feels slightly less grounded and more predictable in its execution.",
+    "Response A presents a more original and cohesive premise that aligns closely with the heist genre, while Response B, though intriguing, feels less focused and predictable."
+   ],
+   "constraint_failures": []
+  },
+  {
+   "task": "fiction-2",
+   "prefer": 0.3333333333333333,
+   "task_win": 0.5,
+   "original": 0.5,
+   "judge_reasons": [
+    "Response B offers a more distinctive and unpredictable take on the brief, while Response A better satisfies the specific task of dividing up items in the kitchen.",
+    "Response A feels more emotionally resonant and captures the quiet grief and shared history of the siblings more effectively, while still adhering to the prompt's constraints."
+   ],
+   "constraint_failures": [
+    {
+     "max_words": false
+    }
+   ]
+  },
+  {
+   "task": "rewrite-2",
+   "prefer": 0.4166666666666667,
+   "task_win": 0.4166666666666667,
+   "original": 0.4166666666666667,
+   "judge_reasons": [
+    "Response A feels more authentic and directly addresses common pain points of small businesses with accounting software, while Response B is a bit too blunt and less descriptive.",
+    "Response B provides a clearer and more engaging portrayal of the company's identity and purpose, while Response A is more focused on the team's size and personal touch."
+   ],
+   "constraint_failures": [
+    {
+     "max_words": false
+    }
+   ]
+  },
+  {
+   "task": "poetry-3",
+   "prefer": 0.5,
+   "task_win": 0.4166666666666667,
+   "original": 0.5,
+   "judge_reasons": [
+    "Response A feels more like a complete poem, whereas Response B feels like a prose piece broken into lines, and its meta-commentary about the brief is unnecessary.",
+    "Response A is a more complete and evocative poem that fulfills the brief directly, while Response B includes meta-commentary and feels less like a finished piece."
+   ],
+   "constraint_failures": []
+  },
+  {
+   "task": "analogy-2",
+   "prefer": 0.5416666666666666,
+   "task_win": 0.4583333333333333,
+   "original": 0.4583333333333333,
+   "judge_reasons": [
+    "Response A is more original and distinctive by elaborating on the analogy to explain the 'why' behind compound interest, making it more impactful for a teenager.",
+    "Response A uses a more classic and easily understandable analogy for compound interest, while Response B's analogy is a bit more abstract and less directly illustrative of the concept."
+   ],
+   "constraint_failures": []
+  }
+ ]
+}

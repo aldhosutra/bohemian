@@ -1,0 +1,8 @@
+.cache/
+eval/.cache/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+eval/human/key.json
+eval/human/review.html

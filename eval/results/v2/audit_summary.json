@@ -1,0 +1,48 @@
+{
+ "baseline": {
+  "openai/gpt-5.4-mini": {
+   "original": 0.8833333333333333,
+   "unpredictable": 0.9666666666666667,
+   "distinctive": 0.95,
+   "prefer": 0.8166666666666667,
+   "task": 0.7
+  },
+  "google/gemini-2.5-flash-lite": {
+   "original": 0.6333333333333333,
+   "unpredictable": 0.85,
+   "distinctive": 0.85,
+   "prefer": 0.8166666666666667,
+   "task": 0.6166666666666667
+  },
+  "openai/gpt-4o-mini": {
+   "original": 0.575,
+   "unpredictable": 0.6583333333333333,
+   "distinctive": 0.6083333333333333,
+   "prefer": 0.525,
+   "task": 0.425
+  }
+ },
+ "oneliner": {
+  "openai/gpt-5.4-mini": {
+   "original": 0.4166666666666667,
+   "unpredictable": 0.4166666666666667,
+   "distinctive": 0.4166666666666667,
+   "prefer": 0.38333333333333336,
+   "task": 0.4083333333333333
+  },
+  "google/gemini-2.5-flash-lite": {
+   "original": 0.3333333333333333,
+   "unpredictable": 0.2833333333333333,
+   "distinctive": 0.26666666666666666,
+   "prefer": 0.2833333333333333,
+   "task": 0.325
+  },
+  "openai/gpt-4o-mini": {
+   "original": 0.36666666666666664,
+   "unpredictable": 0.2,
+   "distinctive": 0.23333333333333334,
+   "prefer": 0.2833333333333333,
+   "task": 0.31666666666666665
+  }
+ }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "bohemian",
+  "owner": { "name": "Aldo Suhartono Putra" },
+  "description": "Bohemian: make the unexpected the default.",
+  "plugins": [
+    {
+      "name": "bohemian",
+      "source": "./",
+      "description": "Creative intelligence for writing and ideation: finds the obvious answer, then moves past it on purpose.",
+      "category": "productivity"
+    }
+  ]
+}

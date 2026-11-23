@@ -1,0 +1,830 @@
+{
+ "run": "v3",
+ "split": "test",
+ "n_tasks": 42,
+ "arms": [
+  "baseline",
+  "oneliner",
+  "antialgorithm",
+  "bohemian"
+ ],
+ "models": [
+  "anthropic/claude-haiku-5.5",
+  "deepseek/deepseek-v4.1-flash"
+ ],
+ "judges": [
+  "google/gemini-2.5-flash-lite",
+  "openai/gpt-4o-mini"
+ ],
+ "n_generations": 1008,
+ "pairwise": {
+  "baseline": {
+   "original": {
+    "win_rate": 0.5704365079365079,
+    "ci": [
+     0.503968253968254,
+     0.634920634920635
+    ],
+    "W": 287,
+    "T": 1,
+    "L": 216,
+    "tasks_above": 24,
+    "tasks_below": 13,
+    "p": 0.09887174959294498
+   },
+   "unpredictable": {
+    "win_rate": 0.7827380952380952,
+    "ci": [
+     0.7152777777777777,
+     0.8452380952380952
+    ],
+    "W": 394,
+    "T": 1,
+    "L": 109,
+    "tasks_above": 37,
+    "tasks_below": 5,
+    "p": 4.4337048166198656e-07
+   },
+   "distinctive": {
+    "win_rate": 0.7331349206349207,
+    "ci": [
+     0.6636904761904762,
+     0.798611111111111
+    ],
+    "W": 369,
+    "T": 1,
+    "L": 134,
+    "tasks_above": 35,
+    "tasks_below": 6,
+    "p": 4.873598300036974e-06
+   },
+   "prefer": {
+    "win_rate": 0.6061507936507937,
+    "ci": [
+     0.5357142857142858,
+     0.6805555555555556
+    ],
+    "W": 305,
+    "T": 1,
+    "L": 198,
+    "tasks_above": 25,
+    "tasks_below": 12,
+    "p": 0.04703102743951604
+   },
+   "task": {
+    "win_rate": 0.4305555555555555,
+    "ci": [
+     0.38888888888888895,
+     0.4722222222222222
+    ],
+    "W": 161,
+    "T": 112,
+    "L": 231,
+    "tasks_above": 14,
+    "tasks_below": 24,
+    "p": 0.14330665429588407
+   }
+  },
+  "oneliner": {
+   "original": {
+    "win_rate": 0.39980158730158727,
+    "ci": [
+     0.34424603174603174,
+     0.4563492063492063
+    ],
+    "W": 200,
+    "T": 3,
+    "L": 301,
+    "tasks_above": 11,
+    "tasks_below": 26,
+    "p": 0.020073851919732988
+   },
+   "unpredictable": {
+    "win_rate": 0.3005952380952381,
+    "ci": [
+     0.24801587301587305,
+     0.3561507936507936
+    ],
+    "W": 150,
+    "T": 3,
+    "L": 351,
+    "tasks_above": 4,
+    "tasks_below": 35,
+    "p": 3.353161446284503e-07
+   },
+   "distinctive": {
+    "win_rate": 0.29464285714285715,
+    "ci": [
+     0.244047619047619,
+     0.34923115079365047
+    ],
+    "W": 147,
+    "T": 3,
+    "L": 354,
+    "tasks_above": 5,
+    "tasks_below": 36,
+    "p": 7.84157236921601e-07
+   },
+   "prefer": {
+    "win_rate": 0.2738095238095238,
+    "ci": [
+     0.2271825396825397,
+     0.3204365079365079
+    ],
+    "W": 137,
+    "T": 2,
+    "L": 365,
+    "tasks_above": 3,
+    "tasks_below": 37,
+    "p": 1.946500560734421e-08
+   },
+   "task": {
+    "win_rate": 0.3611111111111111,
+    "ci": [
+     0.3075396825396825,
+     0.4186507936507936
+    ],
+    "W": 139,
+    "T": 86,
+    "L": 279,
+    "tasks_above": 10,
+    "tasks_below": 30,
+    "p": 0.0022214337732293643
+   }
+  }
+ },
+ "agreement": {
+  "original": {
+   "agree": 0.7678571428571429,
+   "kappa": 0.5396146279004405,
+   "n": 504
+  },
+  "unpredictable": {
+   "agree": 0.7222222222222222,
+   "kappa": 0.4628747164410882,
+   "n": 504
+  },
+  "distinctive": {
+   "agree": 0.6904761904761905,
+   "kappa": 0.4165541192359637,
+   "n": 504
+  },
+  "prefer": {
+   "agree": 0.6686507936507936,
+   "kappa": 0.36694370275657173,
+   "n": 504
+  },
+  "task": {
+   "agree": 0.42658730158730157,
+   "kappa": 0.1525814221384438,
+   "n": 504
+  }
+ },
+ "absolute": {
+  "originality": {
+   "means": {
+    "baseline": 3.202380952380953,
+    "oneliner": 4.123015873015873,
+    "antialgorithm": 4.0396825396825395,
+    "bohemian": 4.055555555555555
+   },
+   "vs_baseline": {
+    "delta": 0.8373015873015872,
+    "ci": [
+     0.7063492063492065,
+     0.9682539682539684
+    ],
+    "pct": 26.146220570012385,
+    "better": 40,
+    "worse": 1,
+    "p": 3.8198777474462986e-11
+   },
+   "vs_oneliner": {
+    "delta": -0.08333333333333333,
+    "ci": [
+     -0.1706349206349206,
+     0.003968253968254007
+    ],
+    "pct": -2.0211742059672764,
+    "better": 10,
+    "worse": 23,
+    "p": 0.03508203336969018
+   }
+  },
+  "specificity": {
+   "means": {
+    "baseline": 3.9007936507936503,
+    "oneliner": 4.563492063492064,
+    "antialgorithm": 4.583333333333333,
+    "bohemian": 4.583333333333333
+   },
+   "vs_baseline": {
+    "delta": 0.6825396825396824,
+    "ci": [
+     0.484126984126984,
+     0.8809523809523808
+    ],
+    "pct": 17.497456765005087,
+    "better": 36,
+    "worse": 2,
+    "p": 5.398760549724102e-09
+   },
+   "vs_oneliner": {
+    "delta": 0.019841269841269864,
+    "ci": [
+     -0.12698412698412698,
+     0.13095238095238101
+    ],
+    "pct": 0.4347826086956526,
+    "better": 18,
+    "worse": 9,
+    "p": 0.12207812070846558
+   }
+  },
+  "distinctiveness": {
+   "means": {
+    "baseline": 3.277777777777778,
+    "oneliner": 4.178571428571429,
+    "antialgorithm": 4.126984126984127,
+    "bohemian": 4.162698412698413
+   },
+   "vs_baseline": {
+    "delta": 0.8492063492063493,
+    "ci": [
+     0.7103174603174602,
+     0.996031746031746
+    ],
+    "pct": 25.907990314769975,
+    "better": 41,
+    "worse": 1,
+    "p": 1.9554136088117957e-11
+   },
+   "vs_oneliner": {
+    "delta": -0.051587301587301584,
+    "ci": [
+     -0.1388888888888888,
+     0.027777777777777807
+    ],
+    "pct": -1.2345679012345676,
+    "better": 14,
+    "worse": 20,
+    "p": 0.39152830513194203
+   }
+  },
+  "coherence": {
+   "means": {
+    "baseline": 5.0,
+    "oneliner": 5.0,
+    "antialgorithm": 5.0,
+    "bohemian": 5.0
+   },
+   "vs_baseline": {
+    "delta": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "pct": 0.0,
+    "better": 0,
+    "worse": 0,
+    "p": 1.0
+   },
+   "vs_oneliner": {
+    "delta": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "pct": 0.0,
+    "better": 0,
+    "worse": 0,
+    "p": 1.0
+   }
+  },
+  "task_alignment": {
+   "means": {
+    "baseline": 5.0,
+    "oneliner": 5.0,
+    "antialgorithm": 4.988095238095238,
+    "bohemian": 4.992063492063492
+   },
+   "vs_baseline": {
+    "delta": -0.011904761904761904,
+    "ci": [
+     -0.03174603174603174,
+     0.0
+    ],
+    "pct": -0.23809523809523808,
+    "better": 0,
+    "worse": 2,
+    "p": 0.5
+   },
+   "vs_oneliner": {
+    "delta": -0.011904761904761904,
+    "ci": [
+     -0.03174603174603174,
+     0.0
+    ],
+    "pct": -0.23809523809523808,
+    "better": 0,
+    "worse": 2,
+    "p": 0.5
+   }
+  },
+  "creative_risk": {
+   "means": {
+    "baseline": 2.3373015873015874,
+    "oneliner": 3.3452380952380953,
+    "antialgorithm": 3.313492063492064,
+    "bohemian": 3.313492063492064
+   },
+   "vs_baseline": {
+    "delta": 0.9761904761904762,
+    "ci": [
+     0.7777777777777777,
+     1.1746031746031746
+    ],
+    "pct": 41.76570458404075,
+    "better": 39,
+    "worse": 2,
+    "p": 7.839844329282641e-10
+   },
+   "vs_oneliner": {
+    "delta": -0.03174603174603168,
+    "ci": [
+     -0.16666666666666657,
+     0.10317460317460325
+    ],
+    "pct": -0.9489916963226552,
+    "better": 15,
+    "worse": 17,
+    "p": 0.860050065908581
+   }
+  }
+ },
+ "deterministic": {
+  "words": {
+   "means": {
+    "baseline": 169.17063492063494,
+    "oneliner": 194.12698412698415,
+    "antialgorithm": 169.09920634920633,
+    "bohemian": 203.0198412698413
+   },
+   "vs_baseline": {
+    "delta": -0.0714285714285677,
+    "ci": [
+     -17.36517857142856,
+     15.547718253968256
+    ],
+    "pct": -0.04222279561820989,
+    "up": 29,
+    "down": 13,
+    "p": 0.019520472782460274
+   },
+   "vs_oneliner": {
+    "delta": -25.027777777777775,
+    "ci": [
+     -49.19067460317459,
+     -5.483730158730161
+    ],
+    "pct": -12.892477514309071,
+    "up": 19,
+    "down": 22,
+    "p": 0.755228657504631
+   }
+  },
+  "constraint_pass_num": {
+   "means": {
+    "baseline": 0.9398148148148149,
+    "oneliner": 0.8703703703703703,
+    "antialgorithm": 0.8842592592592592,
+    "bohemian": 0.8981481481481483
+   },
+   "vs_baseline": {
+    "delta": -0.055555555555555546,
+    "ci": [
+     -0.08796296296296297,
+     -0.023148148148148143
+    ],
+    "pct": -5.911330049261082,
+    "up": 2,
+    "down": 13,
+    "p": 0.00738525390625
+   },
+   "vs_oneliner": {
+    "delta": 0.013888888888888895,
+    "ci": [
+     -0.04166666666666666,
+     0.06944444444444445
+    ],
+    "pct": 1.5957446808510645,
+    "up": 10,
+    "down": 8,
+    "p": 0.8145294189453125
+   }
+  },
+  "cliche_per100": {
+   "means": {
+    "baseline": 0.4373169831843223,
+    "oneliner": 0.279372572154067,
+    "antialgorithm": 0.026099985538882448,
+    "bohemian": 0.20507891727566413
+   },
+   "vs_baseline": {
+    "delta": -0.41121699764543995,
+    "ci": [
+     -0.7864780707022617,
+     -0.1594319516087823
+    ],
+    "pct": -94.03179237430128,
+    "up": 4,
+    "down": 22,
+    "p": 0.0005335211753845215
+   },
+   "vs_oneliner": {
+    "delta": -0.2532725866151846,
+    "ci": [
+     -0.567104618238407,
+     -0.05160660518728909
+    ],
+    "pct": -90.65764210937324,
+    "up": 5,
+    "down": 18,
+    "p": 0.010622024536132812
+   }
+  },
+  "cliche_shared_per100": {
+   "means": {
+    "baseline": 0.0949449540380153,
+    "oneliner": 0.05391894012830441,
+    "antialgorithm": 0.018963205302347404,
+    "bohemian": 0.03389134857477401
+   },
+   "vs_baseline": {
+    "delta": -0.07598174873566789,
+    "ci": [
+     -0.15128965129193844,
+     -0.01117861588580148
+    ],
+    "pct": -80.0271583735196,
+    "up": 6,
+    "down": 10,
+    "p": 0.454498291015625
+   },
+   "vs_oneliner": {
+    "delta": -0.03495573482595699,
+    "ci": [
+     -0.0697865756536324,
+     0.0003037690107804915
+    ],
+    "pct": -64.83015938884748,
+    "up": 4,
+    "down": 15,
+    "p": 0.0192108154296875
+   }
+  },
+  "cliche_heldout_per100": {
+   "means": {
+    "baseline": 0.3423720291463071,
+    "oneliner": 0.2254536320257626,
+    "antialgorithm": 0.007136780236535043,
+    "bohemian": 0.17118756870089008
+   },
+   "vs_baseline": {
+    "delta": -0.33523524890977197,
+    "ci": [
+     -0.7218015251155513,
+     -0.09175259922632109
+    ],
+    "pct": -97.91548969279692,
+    "up": 0,
+    "down": 20,
+    "p": 1.9073486328125e-06
+   },
+   "vs_oneliner": {
+    "delta": -0.21831685178922758,
+    "ci": [
+     -0.5292048996060893,
+     -0.018530022830234662
+    ],
+    "pct": -96.83447981192003,
+    "up": 1,
+    "down": 10,
+    "p": 0.01171875
+   }
+  },
+  "typicality": {
+   "means": {
+    "baseline": 0.7366984551181064,
+    "oneliner": 0.6262092264212077,
+    "antialgorithm": 0.5487639655590832,
+    "bohemian": 0.6054887191864416
+   },
+   "vs_baseline": {
+    "delta": -0.18793448955902314,
+    "ci": [
+     -0.2087116273709572,
+     -0.16738778095231696
+    ],
+    "pct": -25.510368354022646,
+    "up": 0,
+    "down": 42,
+    "p": 4.547473508864641e-13
+   },
+   "vs_oneliner": {
+    "delta": -0.07744526086212443,
+    "ci": [
+     -0.09108433973157201,
+     -0.06357393845517359
+    ],
+    "pct": -12.367313925526922,
+    "up": 1,
+    "down": 41,
+    "p": 1.9554136088117957e-11
+   }
+  },
+  "intra_list_sim": {
+   "means": {
+    "baseline": 0.4279702983887391,
+    "oneliner": 0.35570369354000786,
+    "antialgorithm": 0.3326403152487645,
+    "bohemian": 0.3597737647085244
+   },
+   "vs_baseline": {
+    "delta": -0.09532998313997464,
+    "ci": [
+     -0.15914141386974506,
+     -0.03847470669127152
+    ],
+    "pct": -22.274906342538603,
+    "up": 2,
+    "down": 8,
+    "p": 0.109375
+   },
+   "vs_oneliner": {
+    "delta": -0.02306337829124332,
+    "ci": [
+     -0.04520698154754045,
+     -0.0013468640388639285
+    ],
+    "pct": -6.48387371570806,
+    "up": 4,
+    "down": 6,
+    "p": 0.75390625
+   }
+  },
+  "semantic_diversity": {
+   "means": {
+    "baseline": 0.18675100561750685,
+    "oneliner": 0.2672123149313371,
+    "antialgorithm": 0.3230951886377992,
+    "bohemian": 0.275658570918718
+   },
+   "vs_baseline": {
+    "delta": 0.13634418302029236,
+    "ci": [
+     0.11293615294738282,
+     0.16115129414164983
+    ],
+    "pct": 73.00854020542467,
+    "up": 42,
+    "down": 0,
+    "p": 4.547473508864641e-13
+   },
+   "vs_oneliner": {
+    "delta": 0.05588287370646199,
+    "ci": [
+     0.03560629254968139,
+     0.07689351596637593
+    ],
+    "pct": 20.91328527310639,
+    "up": 31,
+    "down": 11,
+    "p": 0.002887247974285856
+   }
+  },
+  "ngram_overlap": {
+   "means": {
+    "baseline": 0.055984550352930075,
+    "oneliner": 0.015171529369828391,
+    "antialgorithm": 0.01192223695204633,
+    "bohemian": 0.016624592736491067
+   },
+   "vs_baseline": {
+    "delta": -0.04406231340088375,
+    "ci": [
+     -0.07140634949311347,
+     -0.023666225675651603
+    ],
+    "pct": -78.70441599175523,
+    "up": 3,
+    "down": 39,
+    "p": 5.631591193377972e-09
+   },
+   "vs_oneliner": {
+    "delta": -0.0032492924177820637,
+    "ci": [
+     -0.00685600680778485,
+     -0.0001992418967106841
+    ],
+    "pct": -21.41703936746106,
+    "up": 18,
+    "down": 21,
+    "p": 0.7492586247608415
+   }
+  },
+  "cross_model_sim": {
+   "means": {
+    "baseline": 0.7491600255961669,
+    "oneliner": 0.6797514985689321,
+    "antialgorithm": 0.618021335735168,
+    "bohemian": 0.6476013907959345
+   },
+   "vs_baseline": {
+    "delta": -0.13113868986099875,
+    "ci": [
+     -0.16416448742199188,
+     -0.10106059669739431
+    ],
+    "pct": -17.50476338571871,
+    "up": 1,
+    "down": 41,
+    "p": 1.9554136088117957e-11
+   },
+   "vs_oneliner": {
+    "delta": -0.06173016283376405,
+    "ci": [
+     -0.08199715297677003,
+     -0.04159444630726526
+    ],
+    "pct": -9.08128381676589,
+    "up": 8,
+    "down": 34,
+    "p": 6.877111491121468e-05
+   }
+  }
+ },
+ "categories": {
+  "analogy": {
+   "original": 0.5694444444444444,
+   "prefer": 0.7083333333333334,
+   "task": 0.5416666666666666
+  },
+  "brainstorm": {
+   "original": 0.7083333333333334,
+   "prefer": 0.7708333333333334,
+   "task": 0.4583333333333333
+  },
+  "character": {
+   "original": 0.4722222222222222,
+   "prefer": 0.4166666666666667,
+   "task": 0.3611111111111111
+  },
+  "fiction": {
+   "original": 0.625,
+   "prefer": 0.375,
+   "task": 0.4479166666666667
+  },
+  "headlines": {
+   "original": 0.7222222222222222,
+   "prefer": 0.8888888888888888,
+   "task": 0.5555555555555556
+  },
+  "marketing": {
+   "original": 0.6666666666666666,
+   "prefer": 0.6458333333333334,
+   "task": 0.34375
+  },
+  "naming": {
+   "original": 0.8125,
+   "prefer": 0.8958333333333334,
+   "task": 0.4895833333333333
+  },
+  "poetry": {
+   "original": 0.3125,
+   "prefer": 0.5,
+   "task": 0.34375
+  },
+  "positioning": {
+   "original": 0.6111111111111112,
+   "prefer": 0.6666666666666666,
+   "task": 0.625
+  },
+  "rewrite": {
+   "original": 0.3888888888888889,
+   "prefer": 0.5,
+   "task": 0.375
+  },
+  "short_story": {
+   "original": 0.4791666666666667,
+   "prefer": 0.3541666666666667,
+   "task": 0.2604166666666667
+  },
+  "story_concept": {
+   "original": 0.4166666666666667,
+   "prefer": 0.5833333333333334,
+   "task": 0.4444444444444444
+  }
+ },
+ "failures": [
+  {
+   "task": "short_story-3",
+   "prefer": 0.08333333333333333,
+   "task_win": 0.16666666666666666,
+   "original": 0.25,
+   "judge_reasons": [
+    "Response A tells a complete story with a clear beginning, middle, and end, while Response B feels more like a vignette or a character sketch.",
+    "Response A presents a more developed narrative with unique characters and a clear plot, while Response B feels more abstract and less focused on the brief's requirements."
+   ],
+   "constraint_failures": []
+  },
+  {
+   "task": "fiction-5",
+   "prefer": 0.16666666666666666,
+   "task_win": 0.16666666666666666,
+   "original": 0.5833333333333334,
+   "judge_reasons": [
+    "Response B is more evocative and sets a stronger mood, while still fulfilling the prompt's requirements.",
+    "Response B provides a more vivid and atmospheric opening that captures the essence of the hardware store's impending closure while also fulfilling the brief effectively."
+   ],
+   "constraint_failures": [
+    {
+     "max_words": false
+    }
+   ]
+  },
+  {
+   "task": "character-3",
+   "prefer": 0.25,
+   "task_win": 0.25,
+   "original": 0.3333333333333333,
+   "judge_reasons": [
+    "Response B presents a more dynamic and engaging character that aligns closely with the brief's requirement for a scene-stealing side character in a romantic comedy.",
+    "Response A provides a fully fleshed-out character with specific, humorous details and a signature scene, directly fulfilling the prompt's request for a scene-stealing side character in a romantic comedy, whereas Response B is more abstract and less developed."
+   ],
+   "constraint_failures": []
+  },
+  {
+   "task": "rewrite-3",
+   "prefer": 0.25,
+   "task_win": 0.25,
+   "original": 0.25,
+   "judge_reasons": [
+    "Response B offers a more vivid and emotionally resonant portrayal of Sarah's feelings, using unique imagery and a distinctive voice.",
+    "Response A is more vivid and less predictable, using stronger imagery and more specific details to convey Sarah's emotions and the setting."
+   ],
+   "constraint_failures": [
+    {
+     "max_words": false
+    },
+    {
+     "max_words": false
+    }
+   ]
+  },
+  {
+   "task": "short_story-4",
+   "prefer": 0.3333333333333333,
+   "task_win": 0.20833333333333334,
+   "original": 0.3333333333333333,
+   "judge_reasons": [
+    "Response A is more original, unpredictable, and distinctive, offering a richer narrative and a more profound lesson than Response B.",
+    "Response A offers a more engaging narrative with emotional depth and a clear lesson, fulfilling the brief effectively."
+   ],
+   "constraint_failures": []
+  },
+  {
+   "task": "poetry-3",
+   "prefer": 0.4166666666666667,
+   "task_win": 0.20833333333333334,
+   "original": 0.3333333333333333,
+   "judge_reasons": [
+    "Response A offers a more traditional and complete love poem, while Response B feels more like a fragment or a setup for a poem, though it has more unique imagery.",
+    "Response A presents a more traditional yet profound exploration of love, while Response B offers a quirky take that may not resonate as universally."
+   ],
+   "constraint_failures": []
+  },
+  {
+   "task": "character-4",
+   "prefer": 0.3333333333333333,
+   "task_win": 0.3333333333333333,
+   "original": 0.3333333333333333,
+   "judge_reasons": [
+    "Response B presents a more complete and engaging mentor character while adhering closely to the brief's requirements.",
+    "Response A provides a more vivid and cohesive character that aligns closely with the brief's requirements."
+   ],
+   "constraint_failures": []
+  },
+  {
+   "task": "marketing-3",
+   "prefer": 0.4166666666666667,
+   "task_win": 0.25,
+   "original": 0.4166666666666667,
+   "judge_reasons": [
+    "Response A directly addresses the freelancer's pain points and offers clear solutions, while Response B is more poetic but less informative.",
+    "Response A is more comprehensive and better addresses the core needs of a freelancer, while Response B is a bit too narrow in its focus."
+   ],
+   "constraint_failures": []
+  }
+ ]
+}

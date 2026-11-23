@@ -1,0 +1,1 @@
+Snapshot of SKILL.md from https://github.com/mankidev/antialgorithm at commit a6392c0d35382cd8fe0676668e2c7b2de4ec9269 (2026-11-20), MIT license (see LICENSE). Used unmodified as a benchmark arm. visuals.md is not included: SKILL.md tells the agent to read it only for visual work, and every benchmark task is text.
