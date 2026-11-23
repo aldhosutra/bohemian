@@ -52,10 +52,17 @@ class Checks(unittest.TestCase):
 
 class Lexicon(unittest.TestCase):
     def test_shared_and_heldout(self):
-        shared = lexicon.shared_keys()
+        # Use a fixed text so the test does not depend on the current skill wording.
+        original = lexicon.skill_text
+        lexicon.skill_text = lambda: "avoid a rich tapestry. remember the brief."
+        try:
+            shared = lexicon.shared_keys()
+        finally:
+            lexicon.skill_text = original
         self.assertIn("tapestry", shared)
         self.assertNotIn("ember", shared, "substring of 'remember' must not count as shared")
-        self.assertGreater(len(lexicon.ENTRIES) - len(shared), len(shared), "most entries should be held out")
+        real = lexicon.shared_keys()
+        self.assertGreater(len(lexicon.ENTRIES) - len(real), len(real), "most entries should be held out")
 
     def test_case_sensitivity(self):
         self.assertIn("aria", lexicon.scan("Aria waited."))

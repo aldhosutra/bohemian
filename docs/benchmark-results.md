@@ -1,10 +1,12 @@
 # Benchmark results
 
-*Run 2026-11-23. Method: [`evaluation.md`](evaluation.md). Raw data: `eval/results/{v1,v2,v3}/`. Per-run reports: `report_bohemian_{all,test,dev}.md`. Total API spend for all of it: **USD 2.84** (12,328 calls), of which USD 0.45 was the Antialgorithm comparison.*
+*Run 2026-11-23. Method: [`evaluation.md`](evaluation.md). Raw data: `eval/results/{v1,v2,v3,v4}/`. Per-run reports: `report_bohemian_{all,test,dev}.md`. Total API spend for all of it: **USD 3.55**.*
 
 ## Summary
 
-On 42 held-out test tasks, two generator models, and 3 samples per cell:
+**Current version: v4b**, a 1,090-word single-file rewrite of v3. On the 42 test tasks it uses about 3.8× fewer input tokens than v3 and about 30% fewer than Antialgorithm. It matches baseline length, has the best hard-limit pass rate of any arm (94.9%), and beats v3 on every judge-free measure. Judged preference is within a few points of v3: 68% vs baseline, 33% vs the one-liner, 57% vs Antialgorithm (the stronger judge: 85%, 48%, 48%). Its weakness is task fit by the cheap judges (45% vs baseline; the stronger judge gives 65%). Details in "v4: the lean rewrite" below.
+
+The numbered findings below are for v3, the version benchmarked first. On 42 held-out test tasks, two generator models, and 3 samples per cell:
 
 1. **Bohemian beats the same model with no skill.** In blinded pairwise comparison, judges preferred the Bohemian output **73%** of the time [95% CI 65–80], found it more distinctive **80%** [73–86] and less predictable **82%** [76–88]. Task fit was **unchanged** (53% [48–57]). Bohemian roughly halves cliché density, *including clichés the skill never names* (−50% held-out). Its outputs are 18% further from an "obvious answer" anchor, and 48% more varied across samples.
 2. **Bohemian does not beat a one-line "be original" instruction according to the two cheap judges.** They preferred the one-liner's output (Bohemian prefer rate 37% [31–43]). A stronger judge, run on a random 40-pair subset, called it roughly even (Bohemian preferred 55%, task 56%; n=40, so the interval is wide). On judge-free measures Bohemian is slightly further from the obvious answer than the one-liner (typicality −3% [−5, −1]) and converges less across models (−5% [−8, −2]). Its cliché, diversity and specificity numbers are statistically indistinguishable from the one-liner's.
@@ -34,6 +36,8 @@ The honest bottom line: Bohemian reliably makes a model's creative output less p
 | v1 | initial skill | — |
 | v2 | steps declared non-optional; "original *and* good" + payoff test; "specific ≠ quiet"; list order is not a ranking, the bystander narrator named as a default; create mode returns one piece; count before showing; mode inferred from the request | Haiku skipped the method in 110/162 outputs; "displaced witness" appeared in 12 of 44 dev plans; Haiku returned 3 taglines when asked for one; rewrites overran length |
 | v3 | an anchor is a launch point and the leap can be large; replaced "never ask what would be interesting" with "find the first interesting idea and go past it"; choose the strongest hook; restraint is not a house style; make it fully realized; never leak notes | the stronger judge's reasons on dev: Bohemian read as "smart but internally literary", "a premise sketch", while the one-liner was "more vivid", with "a stronger, more unusual premise"; one output leaked notes |
+| v4 | single 1,072-word file: five-line plan, five-family table with cheap versions, short stock-move list instead of a cliché catalog, one paragraph per mode; names from the piece's world, numbers only when needed, endings that stop; never longer than the brief | v3 cost 2.6× Antialgorithm's input tokens for a small judged edge, and lost to it on every judge-free measure |
+| v4b | the plan's first line asks for the target length as a number (for a rewrite, the original's word count) | v4 dev constraint pass 89%: rewrites ran to 2–3× the original's length |
 
 An ablation on dev (SKILL.md alone, no reference files) did **not** do better against the one-liner (prefer 24% vs 31% for full v2), so the long lists of tells were not the problem.
 
@@ -41,21 +45,21 @@ An ablation on dev (SKILL.md alone, no reference files) did **not** do better ag
 
 Pairwise win rate of Bohemian (ties count half; both cheap judges; 95% CI over tasks):
 
-| vs baseline | v1 | v2 | v3 |
-|---|---|---|---|
-| original | 61% [55–68] | 64% [57–71] | 65% [58–72] |
-| unpredictable | 77% [71–82] | 79% [73–85] | 82% [76–88] |
-| distinctive | 72% [66–77] | 75% [69–82] | 80% [73–86] |
-| prefer | 64% [58–71] | 70% [62–77] | **73% [65–80]** |
-| task | 51% [46–55] | 53% [48–58] | 53% [48–57] |
+| vs baseline | v1 | v2 | v3 | v4b |
+|---|---|---|---|---|
+| original | 61% [55–68] | 64% [57–71] | 65% [58–72] | 61% [54–68] |
+| unpredictable | 77% [71–82] | 79% [73–85] | 82% [76–88] | 81% [74–87] |
+| distinctive | 72% [66–77] | 75% [69–82] | 80% [73–86] | 75% [68–83] |
+| prefer | 64% [58–71] | 70% [62–77] | **73% [65–80]** | 68% [60–76] |
+| task | 51% [46–55] | 53% [48–58] | 53% [48–57] | 45% [40–50] |
 
-| vs one-liner | v1 | v2 | v3 |
-|---|---|---|---|
-| original | 39% [34–45] | 39% [34–45] | 44% [38–49] |
-| unpredictable | 25% [20–30] | 29% [24–34] | 35% [29–41] |
-| distinctive | 26% [21–31] | 28% [22–34] | 38% [31–44] |
-| prefer | 26% [21–32] | 31% [25–38] | **37% [31–43]** |
-| task | 37% [32–42] | 40% [35–45] | 42% [36–47] |
+| vs one-liner | v1 | v2 | v3 | v4b |
+|---|---|---|---|---|
+| original | 39% [34–45] | 39% [34–45] | 44% [38–49] | 47% [42–52] |
+| unpredictable | 25% [20–30] | 29% [24–34] | 35% [29–41] | 34% [29–39] |
+| distinctive | 26% [21–31] | 28% [22–34] | 38% [31–44] | 35% [30–40] |
+| prefer | 26% [21–32] | 31% [25–38] | **37% [31–43]** | 33% [28–38] |
+| task | 37% [32–42] | 40% [35–45] | 42% [36–47] | 39% [35–44] |
 
 Stronger-judge audit (`gpt-5.4-mini`), random test-split pairs:
 
@@ -65,6 +69,9 @@ Stronger-judge audit (`gpt-5.4-mini`), random test-split pairs:
 | v2 vs one-liner | 60 | 42% | 42% | 42% | 38% | 41% |
 | v3 vs baseline | 40 | 90% | 98% | 100% | 92% | 61% |
 | v3 vs one-liner | 40 | 49% | 38% | 48% | **55%** | 56% |
+| v4b vs baseline | 40 | 88% | 95% | 95% | 85% | 65% |
+| v4b vs one-liner | 40 | 48% | 45% | 48% | 48% | 48% |
+| v4b vs Antialgorithm | 40 | 41% | 42% | 40% | 48% | 52% |
 
 ## v3 in detail, test split
 
@@ -173,6 +180,44 @@ All Antialgorithm-vs-Bohemian differences in this table are significant except c
 
 **Outcome:** the rule's first condition fails (judges prefer Bohemian head-to-head, or call it even), so Bohemian stays. That is not a win for Bohemian either. Antialgorithm moves further from the default by every automatic measure, and judges find it slightly less satisfying and sometimes less on-brief. The two skills sit at different points of the same trade-off: Antialgorithm diverges more, Bohemian holds the brief and the payoff a little better. Neither is shown to beat the one-line instruction on judged quality.
 
+## v4: the lean rewrite
+
+Run `eval/results/v4/`, reusing the baseline, one-liner and Antialgorithm outputs from v3, so every arm saw identical tasks and settings. v4 was revised once on dev (to v4b), then run once on test. Success criteria were written down before any v4 judging (`docs/devlog.md`).
+
+**Tokens and cost per call, test split:**
+
+| | input (DeepSeek / Haiku) | output | cost per 1,000 calls |
+|---|---|---|---|
+| Antialgorithm | 2,422 / 3,236 | 487 / 368 | $0.44 / $0.51 |
+| Bohemian v3 | 6,058 / 8,836 | 603 / 393 | $0.61 / $1.08 |
+| **Bohemian v4b** | **1,624 / 2,318** | 445 / 459 | **$0.38 / $0.46** |
+
+**Judge-free, test split:**
+
+| | baseline | one-liner | Antialgorithm | v3 | **v4b** |
+|---|---|---|---|---|---|
+| words | 169 | 194 | 169 | 203 | 173 |
+| constraint pass | 0.940 | 0.870 | 0.884 | 0.898 | **0.949** |
+| clichés /100 words (all) | 0.437 | 0.279 | **0.026** | 0.205 | 0.179 |
+| typicality | 0.737 | 0.626 | **0.549** | 0.605 | 0.582 |
+| semantic diversity | 0.187 | 0.267 | **0.323** | 0.276 | 0.319 |
+| cross-model similarity | 0.749 | 0.680 | **0.618** | 0.648 | 0.638 |
+| intra-list similarity | 0.428 | 0.356 | **0.333** | 0.360 | 0.354 |
+
+**v4b vs Antialgorithm, head-to-head:** cheap judges prefer v4b 56.6% [51.9–61.5] (24 tasks above 50%, 11 below; p = 0.04), task 50.4%. Both are now the same length, so this is not a length effect. Stronger judge: 48% (n=40).
+
+**Criteria:**
+
+| # | Criterion | Result |
+|---|---|---|
+| 1 | input tokens below Antialgorithm's | pass |
+| 2 | stronger judge prefers v4b over Antialgorithm | fail (48%, even) |
+| 3 | judge-free gap to Antialgorithm narrows | pass (typicality gap 0.057 → 0.033, diversity gap closed) |
+| 4 | task fit vs baseline ≥ 50% | mixed (cheap judges 45%, stronger judge 65%) |
+| 5 | constraint pass ≥ Antialgorithm's | pass (0.949) |
+
+**Other observations:** Haiku wrote its plan in 92 of 162 v4b outputs, more than in any earlier version. Weakest categories vs baseline: character (39% prefer), fiction (40%), poetry (52%). Short stories now miss length limits more than baseline (67% vs 92%).
+
 ## Known measurement problems
 
 - **Length bias.** v3 vs baseline, by relative length of the pair: Bohemian longer by >10% → prefer 81% (n=262); similar length → 70% (n=150); Bohemian shorter → 54% (n=92). Against the one-liner: 54% / 33% / 19%. Judges were told not to reward length and plainly still do. The length-matched numbers (70% vs baseline, 33% vs one-liner) are the cleanest estimate.
@@ -203,7 +248,8 @@ Full texts of fiction-5 are in [`examples.md`](examples.md#failure-case). A recu
 | Judging (pairwise, absolute, self-tests, audits) | 1.19 |
 | Anchors + embeddings | 0.04 |
 | Antialgorithm comparison (generation 0.12, judging and audits 0.33) | 0.45 |
-| **Total** | **2.84** of the 3.00 cap |
+| v4 / v4b (dev and test generation, judging, audits) | 0.71 |
+| **Total** | **3.55** of the 4.00 cap (raised from 3.00 by the user for v4) |
 
 ## Human evaluation
 

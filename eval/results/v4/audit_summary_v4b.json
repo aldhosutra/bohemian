@@ -1,0 +1,71 @@
+{
+ "antialgorithm": {
+  "openai/gpt-5.4-mini": {
+   "original": 0.4125,
+   "unpredictable": 0.425,
+   "distinctive": 0.4,
+   "prefer": 0.475,
+   "task": 0.525
+  },
+  "google/gemini-2.5-flash-lite": {
+   "original": 0.575,
+   "unpredictable": 0.425,
+   "distinctive": 0.45,
+   "prefer": 0.525,
+   "task": 0.4625
+  },
+  "openai/gpt-4o-mini": {
+   "original": 0.4875,
+   "unpredictable": 0.6875,
+   "distinctive": 0.5875,
+   "prefer": 0.6,
+   "task": 0.5
+  }
+ },
+ "baseline": {
+  "openai/gpt-5.4-mini": {
+   "original": 0.875,
+   "unpredictable": 0.95,
+   "distinctive": 0.95,
+   "prefer": 0.85,
+   "task": 0.65
+  },
+  "google/gemini-2.5-flash-lite": {
+   "original": 0.6,
+   "unpredictable": 0.825,
+   "distinctive": 0.825,
+   "prefer": 0.8,
+   "task": 0.5625
+  },
+  "openai/gpt-4o-mini": {
+   "original": 0.55,
+   "unpredictable": 0.625,
+   "distinctive": 0.55,
+   "prefer": 0.4,
+   "task": 0.4125
+  }
+ },
+ "oneliner": {
+  "openai/gpt-5.4-mini": {
+   "original": 0.475,
+   "unpredictable": 0.45,
+   "distinctive": 0.475,
+   "prefer": 0.475,
+   "task": 0.475
+  },
+  "google/gemini-2.5-flash-lite": {
+   "original": 0.575,
+   "unpredictable": 0.55,
+   "distinctive": 0.6,
+   "prefer": 0.6,
+   "task": 0.4875
+  },
+  "openai/gpt-4o-mini": {
+   "original": 0.55,
+   "unpredictable": 0.275,
+   "distinctive": 0.3,
+   "prefer": 0.225,
+   "task": 0.4625
+  }
+ }
+}

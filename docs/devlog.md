@@ -63,6 +63,16 @@ Decisions and experimental results, in order. Costs are actual OpenRouter charge
 - Outcome: rule not met, Bohemian stays. Recorded as a trade-off, not a win. A natural next step is to borrow what makes Antialgorithm diverge (its handling of names, seeds and regions) and test it, which needs budget beyond the remaining USD 0.16.
 - Cost USD 0.45. Total USD 2.84.
 
+### v4 "lean" experiment (uncommitted)
+- Goal from the user: make Bohemian cheaper than Antialgorithm and more creative. v4 is one 1,072-word `SKILL.md` (v3: ~4,400 words with references; Antialgorithm: 1,882). It keeps the steps that won judges (fixed parts, strongest hook, payoff and brief checks, mode inference), folds techniques into a five-family table, replaces the cliché catalog with a short list of moves, adds three rules learned from Antialgorithm's results (names from the world's own naming, numbers only when needed, endings that stop) and a strict length rule, and plans in five lines.
+- Success criteria, fixed before running: on the test split, (1) input tokens below Antialgorithm's; (2) the stronger judge prefers v4 over Antialgorithm head-to-head; (3) the judge-free gap to Antialgorithm narrows on clichés and typicality; (4) task fit vs baseline at least 50%; (5) constraint pass at least Antialgorithm's (0.884). Tuning on dev only. Budget raised to USD 4.00 by the user.
+- Paused mid-run at the user's request (another session needed the OpenRouter credit), with `STATUS.md` as the resume tracker. Resumed later.
+- Dev, v4: input tokens 1,599 / 2,288 per call (Antialgorithm 2,421 / 3,232). Prefer vs baseline 63%, vs Antialgorithm 61%. Constraint pass dropped to 89%: three rewrites ran to 120–150 words against a 55-word original, because the plan recorded "short paragraph" instead of a number.
+- v4b: the plan's first line now asks for the target length as a number of words, lines or items. Dev constraint pass 97%, typicality 0.553 (v4 0.570). Stopped revising after this one round.
+- Test, v4b: prefer vs baseline 68% [60–76], vs one-liner 33% [28–38], vs Antialgorithm 56.6% [51.9–61.5]; task fit vs baseline 45.1% [40.1–49.9]. Stronger judge (n=40 each): vs Antialgorithm 48%, vs baseline 85% (task 65%), vs one-liner 48%. Judge-free: length equal to baseline, constraint pass 0.949 (best of all arms), held-out clichés −89% vs baseline, typicality 0.582 (Antialgorithm 0.549, v3 0.605), diversity 0.319 (Antialgorithm 0.323).
+- Criteria: tokens pass, judge-free gap pass, constraint pass pass; stronger-judge head-to-head fail (even); task fit mixed (cheap judges 45%, stronger judge 65%).
+- Spend so far USD 3.55.
+
 ### Phase 8: docs and packaging
 - README, methodology, architecture, evaluation, results and examples written. The examples are selected by a fixed rule (first test task in six categories, sample 0), not by quality, and include the worst-scoring task.
 - Human review kit built from v3 (40 pairs) and checked with a synthetic rater. **No human ratings collected.**

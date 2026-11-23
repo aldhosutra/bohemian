@@ -41,7 +41,7 @@ Studied on 2026-11-23 from the source of each repository (shallow clones of the 
 | Name the default before diverging | Antialgorithm | Step 2, broken into four layers (premise, shape, material, voice) so a piece can keep a default shape while changing its premise |
 | One-sentence reason from the brief | Antialgorithm | The "anchored" rule and the reason test in step 6 |
 | No famous opposites | Antialgorithm | Stated in step 3 and in each technique's "goes cheap" note |
-| The escape becomes a default | Antialgorithm | A full "second-order tells" section in `references/cliches.md`; the move log |
+| The escape becomes a default | Antialgorithm | Second-order tells named in each technique family's "goes cheap" column; the move log |
 | External seeds, history-aware | Antialgorithm | `scripts/seed.py`, with pools designed for writing and ideation (lens, entry, shape, register; verb, constraint, who, pressure; naming source, form, feel) |
 | Levels via argument | Ponytail | `mild / bold / wild`, defined by *what may move*, not by how strange the result is |
 | Ordered steps, hard floors | Ponytail | The six-step method; fixed parts of the brief are never traded for novelty |
@@ -61,3 +61,16 @@ Studied on 2026-11-23 from the source of each repository (shallow clones of the 
 ## Licensing
 
 Both projects are MIT. Bohemian copies no code or instruction text from either; all skill text and scripts were written for this project. The concepts above are credited in the README and here.
+
+## Research for v5: what could make Bohemian clearly better than Antialgorithm
+
+Done after v4b (2026-11-23). Where v4b stands against Antialgorithm on the test split: cheap judges prefer v4b (57%) and the stronger judge calls it even (48%, n=40). Antialgorithm is still a little further from the obvious answer (typicality 0.549 vs 0.582) and has fewer raw cliché hits (20 vs 32), and judges rate it more original on fiction (v4b 42%), rewrites (39%) and short stories (44%). v4b's remaining hits are mostly stock names ("Mara" 6, "Vance" 5) and clock times (8).
+
+| Finding | Source | What it suggests for Bohemian |
+|---|---|---|
+| Asking the model for several candidates *with their probabilities* (Verbalized Sampling) raised creative-writing diversity 1.6–2.1× over direct prompting, with better human ratings. Mode collapse is traced to typicality bias in preference data. | [Zhang et al., 2025, arXiv 2510.01171](https://arxiv.org/abs/2510.01171) | In the plan, list candidate directions with a rough "how likely would a typical model write this" estimate and pick from the low-probability tail that still passes the brief. Antialgorithm has no such step. |
+| Models repeat themselves and converge with each other on open-ended prompts (the "Artificial Hivemind"). A later critique argues the evidence is weaker than claimed, and that prompting reliably raises diversity. | [Jiang et al., 2025, arXiv 2510.22954](https://arxiv.org/abs/2510.22954); [Schaeffer et al., arXiv 2609.33936](https://arxiv.org/pdf/2609.33936) | Cross-model similarity is the right metric to watch. |
+| Having the model first write a random string and derive its answer from it (String Seed of Thought) raised NoveltyBench diversity without hurting quality. Prepending unrelated random words also raises diversity. | [Misaki & Akiba, arXiv 2510.21150](https://arxiv.org/abs/2510.21150); [Agrawal & Goyal, arXiv 2601.18053](https://arxiv.org/abs/2601.18053) | A script-free seed: when `seed.py` can't run, the plan starts from a self-generated random string, used to choose among tail candidates and for names and setting. |
+| Inference-time methods tend to trade quality for originality. | [Beyond Memorization, arXiv 2504.09389](https://arxiv.org/abs/2504.09389) | Keep v4b's payoff and brief checks, since they are where Bohemian beats Antialgorithm. |
+| Simple "think outside the box" prompts beat complex creativity frameworks (TRIZ, SCAMPER) for novelty. | [IDEAFix, arXiv 2606.00875](https://arxiv.org/pdf/2606.00875) | Consistent with the one-liner's strength. Keep the skill short; don't add frameworks. |
+| Slop phrases are best found by over-representation against human text, and suppressed at decoding time; prompt-level bans are weaker. | [Paech et al., Antislop, arXiv 2510.15061](https://arxiv.org/abs/2510.15061) | Naming clichés in the prompt can plant them. Prefer naming the *kind* of move. Leave word lists to `lint.py` after drafting. |

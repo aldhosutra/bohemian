@@ -2,7 +2,7 @@
 
 **Only this tracker is committed.** Every experiment change listed below lives only in the working directory of the original machine (by the user's choice). Without that directory, restart v4 from this file: the skill on `main` is still the benchmarked v3 release.
 
-**State:** PAUSED at 2026-11-23, by the user, because another session needs the OpenRouter credit. **Do not make API calls until the user says to resume.**
+**State:** v4b is the shipped skill (user decision), docs updated, not committed. **Next: v5, aimed at beating Antialgorithm clearly.** Plan below. Waiting for the user to approve the budget for v5.
 
 ## Goal
 
@@ -33,21 +33,48 @@ The v3 skill is also preserved in `eval/results/v3/skill_snapshot/`.
 
 ## Budget
 
-- Spent: **USD 2.91** (see `eval/results/ledger.jsonl`). The user raised the cap from 3.00 to **4.00** for this experiment.
+- Spent: **USD 3.55** (see `eval/results/ledger.jsonl`). The user raised the cap from 3.00 to **4.00** for this experiment.
 - The code default is still 3.00. Pass `BOHEMIAN_BUDGET_USD=4.00` on every command.
-- Estimated remaining cost: finish dev about $0.08, test run about $0.45. Total stays under $4.
+- The planned experiment is complete. USD 0.45 remains under the cap.
 
 ## Progress
 
-- [x] Write lean v4 `SKILL.md`.
-- [x] Set up the `eval/results/v4/` run with the reference arms.
-- [~] Dev generation, interrupted: Antialgorithm 66 of 72 dev outputs, v4 63 of 72. Reruns skip finished outputs.
-- [ ] Dev judging and metrics, then read the dev report. Revise v4 if needed, dev only. At most one or two rounds.
-- [ ] Test-split generation and judging for v4.
-- [ ] Stronger-judge audits on the test split.
-- [ ] Check the five criteria. Token counts come from the request cache; the method is in the conversation, or recompute usage from `eval/.cache/chat` the way the v3 token comparison did.
-- [ ] Update the docs (benchmark-results, README, devlog). Decide with the user: ship v4 or restore v3.
+- [x] Lean v4 `SKILL.md` written (snapshot: `eval/results/v4/skill_snapshot_v4/`).
+- [x] Dev run of v4. Problem found: rewrites overran their length (constraint pass 89%).
+- [x] One revision, **v4b** (the plan's first line now asks for the target length as a number). Dev constraint pass 97%. Snapshot: `eval/results/v4/skill_snapshot_v4b/`. This is the text now in `skills/bohemian/`.
+- [x] Test-split run of v4b, judging, metrics and stronger-judge audit (`report_bohemian_v4b_test.md`, `audit_v4b.md`).
+- [x] Fixed `tests/test_eval.py`, which assumed the skill text contains "tapestry". All 16 tests pass.
+- [x] User decision: ship v4b. Docs updated (README, benchmark-results, architecture, methodology, evaluation, research, CONTRIBUTING); plugin version 0.2.0.
 - [ ] Commit or push **only if the user asks.**
+
+## Result: v4b against the criteria (test split, 42 tasks)
+
+| # | Criterion | Result | |
+|---|---|---|---|
+| 1 | Input tokens below Antialgorithm's | 1,624 / 2,318 vs 2,422 / 3,236 (DeepSeek / Haiku); cost per call 15% / 9% lower | pass |
+| 2 | Stronger judge prefers v4b over Antialgorithm | 48% (n=40). Cheap judges: 56.6% [51.9–61.5] | **fail** (even) |
+| 3 | Judge-free gap to Antialgorithm narrows | typicality gap 0.057 → 0.033; all-cliché gap 0.179 → 0.153; diversity gap −0.047 → −0.004 | pass |
+| 4 | Task fit vs baseline ≥ 50% | cheap judges 45.1% [40.1–49.9]; stronger judge 65% | **mixed** |
+| 5 | Constraint pass ≥ 0.884 | 0.949, the best of all arms (baseline 0.940) | pass |
+
+v4b vs v3: about 3.8× fewer input tokens; length now equal to baseline (v3 was +20%); better on every judge-free measure and on constraint pass. Judged preference: vs baseline 68% vs 73%, vs one-liner 33% vs 37%, stronger judge vs one-liner 48% vs 55%. Spend after the run: USD 3.55 of the 4.00 cap.
+
+## Next: v5 plan (research notes in `docs/research.md`, "Research for v5")
+
+Changes to test, one at a time on dev where possible:
+1. **Tail pick:** plan lists 5 candidate directions with a rough probability that a typical model would write each, and picks from those under about 10% that still pass the brief (Verbalized Sampling).
+2. **Script-free seed:** the plan begins with a short random string that steers the choice among tail candidates and the names and setting (String Seed of Thought).
+3. **Names:** write down the first three names that come to mind and use none of them. Fixes "Mara" and "Vance".
+4. **No named clichés in the skill text** (remove "embers, tides, lanterns, salt"): they may plant the words.
+
+Bar for "clearly better than Antialgorithm", to be fixed before v5 judging:
+- the stronger judge prefers v5 at least 60%, with the 95% CI above 50%, on at least 120 test pairs; plus a second strong judge from another family that agrees;
+- typicality, diversity and all-cliché rate at least as good as Antialgorithm's;
+- task fit vs Antialgorithm at least 50%; input tokens still below Antialgorithm's;
+- confirmed on about 20 **new** tasks never used before (the 42-task test split has now been looked at for three comparisons);
+- ideally, the blind human review (`eval/human/`).
+
+Estimated cost about USD 1.10 (two dev rounds, test run, larger audits, new tasks). Needs the cap raised to about 5.00.
 
 ## Resume commands (run from the repo root)
 

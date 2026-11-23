@@ -1,6 +1,6 @@
 {
   "name": "bohemian",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Creative intelligence skill: names the obvious answer, then moves past it for a reason taken from the brief, while keeping the user's goal, constraints and voice.",
   "author": { "name": "Aldo Suhartono Putra" },
   "license": "MIT",

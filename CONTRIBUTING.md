@@ -4,9 +4,9 @@ Issues and pull requests are welcome.
 
 ## The skill text is the behavior
 
-`skills/bohemian/SKILL.md` and `references/*.md` are read by the model, so wording changes behavior. Keep sentences short and plain. Don't name other tools, people or projects in skill text, and keep examples general.
+`skills/bohemian/SKILL.md` is read by the model, so wording changes behavior. Keep sentences short and plain. Don't name other tools, people or projects in skill text, and keep examples general.
 
-`SKILL.md` loads on every creative request, so keep it short. Put detail in `references/` and point to it from the step that needs it.
+`SKILL.md` loads on every creative request, so keep it short. v4 cut it from about 4,400 words (with reference files) to 1,100 with no measured loss. Every added line should earn its tokens on the benchmark.
 
 ## Changing the skill: prove it
 
@@ -27,11 +27,11 @@ The benchmark caps spending with `BOHEMIAN_BUDGET_USD` (default 3.00) and caches
 
 ## New techniques
 
-Add a technique to `references/techniques.md` only with: its family, what it does, when it fits, and **how it goes cheap**. A technique without a named failure mode is not ready.
+Add a technique to the family table only with: its family, what it does, and **how it goes cheap**. A technique without a named failure mode is not ready.
 
 ## New tells
 
-Add tells to `references/cliches.md` with a short example of output that made you want them. If a tell is also added to `eval/lexicon.py`, it becomes a *shared* entry and stops counting toward the held-out cliché rate. That is intended: the held-out rate only means something if the skill never sees those entries.
+Add a stock move to the skill only with a short example of output that made you want it. Naming specific words can plant them; prefer naming the kind of move. If a tell is also added to `eval/lexicon.py`, it becomes a *shared* entry and stops counting toward the held-out cliché rate.
 
 ## Scripts
 

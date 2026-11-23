@@ -4,11 +4,7 @@ Bohemian is an [Agent Skill](https://agentskills.io): a folder with a `SKILL.md`
 
 ```
 skills/bohemian/
-  SKILL.md                 always loaded when the skill triggers (~1.9k words): intent, method, intensity, voice, memory, output
-  references/
-    techniques.md          read during step 3: six technique families, each technique with its "goes cheap" failure
-    cliches.md             read during step 2: tells by kind of piece, plus second-order "creative mode" tells
-    modes.md               read only for brainstorm / rewrite / critique / compare
+  SKILL.md                 always loaded when the skill triggers (~1.1k words): plan, technique families, writing rules, check, modes, memory
   scripts/                 optional, Python 3 stdlib only
     seed.py                external starting point for thin briefs (text | idea | name), avoids recent values
     moves.py               log of main moves by technique family; warns on streaks
@@ -25,33 +21,29 @@ tests/                     unittest suite for scripts and evaluation logic
 user request
    │
    ▼
-[1 Read the brief] ── fixed parts, purpose, audience, voice markers
+[Plan, five lines, private]
+   1 Fixed      format · facts · audience · voice · target length as a number
+   2 Default    obvious premise, shape, stock material
+   3 Directions three, different families, each from a fact of the brief   ◄── scripts/moves.py (family use)
+                                                                            ◄── scripts/seed.py (thin brief)
+   4 Pick       strongest hook that serves the purpose
+   5 Reason     one sentence from the brief
    │
    ▼
-[2 Name the default] ── per layer: premise · shape · material · voice      ◄── references/cliches.md
+[Make it] ── concrete, names from the piece's world, numbers only when needed, endings that stop, within length
    │
    ▼
-[3 Diverge for a reason] ── directions from different families,            ◄── references/techniques.md
-   │                         each anchored to a fact of the brief            ◄── scripts/moves.py (family use)
-   │                                                                         ◄── scripts/seed.py (thin brief)
-   ▼
-[4 Choose] ── best for the user's purpose, not the strangest
+[Check once] ── swap · default · payoff · brief                             ◄── scripts/lint.py
    │
-   ▼
-[5 Make it] ── concrete, plain, voice kept, fixed parts kept
-   │
-   ▼
-[6 Critique, refine once] ── swap test · default test · reason test         ◄── scripts/lint.py
-   │                         tells · brief test
    ▼
 deliver ──► scripts/moves.py add <family> "<move>"
 ```
 
-Steps 1–4 and 6 are private. In agents with extended thinking they happen there. In a plain chat without thinking, the model has to plan in visible text or skip the steps. The benchmark measured this and made planning equal across all arms (see `docs/evaluation.md`).
+The plan is private. In agents with extended thinking it happens there. In a plain chat without thinking, the model has to plan in visible text or skip it. The benchmark made planning equal across all arms (see `docs/evaluation.md`).
 
 ## Design decisions
 
-**Progressive disclosure.** `SKILL.md` holds the method. The longer references load only at the step that needs them, and `modes.md` loads only for non-default modes. This keeps the always-loaded cost down while letting the method point to detail.
+**One short file.** v3 had a 1,900-word `SKILL.md` plus three reference files (techniques, clichés, modes), about 4,400 words in all. v4 folds what mattered into one 1,100-word file: a five-family technique table with each family's cheap version, a short list of stock moves instead of a cliché catalog, and one paragraph per mode. On the benchmark this cut input tokens by about 3.8× with no judged loss beyond noise, and improved hard-limit compliance. A long list of clichés can also plant the words it warns against.
 
 **Scripts are optional.** Every script-backed step has a no-script fallback written into the skill (session-only move discipline, a seed-free start from the brief's own facts, a manual tell scan). The benchmark ran with no scripts at all.
 

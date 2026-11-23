@@ -12,7 +12,7 @@ All arms use the same generator model, temperature (1.0), `max_tokens` (4000), r
 |---|---|
 | `baseline` | "You are a helpful assistant." |
 | `oneliner` | "You are a helpful assistant. Be original: avoid cliches and look past the first, most obvious idea." |
-| `bohemian` | `SKILL.md` + `references/techniques.md` + `cliches.md` + `modes.md`, as an agent would see them after reading the files the skill points to, plus one line saying scripts cannot run |
+| `bohemian` | `SKILL.md` (plus, for v1–v3, `references/techniques.md`, `cliches.md`, `modes.md`, as an agent would see them after reading the files the skill points to), plus one line saying scripts cannot run. v4/v4b are a single file |
 | `antialgorithm` | the same preamble + Antialgorithm's unmodified `SKILL.md` (`eval/competitors/antialgorithm/`, commit `a6392c0`). Run on the test split of v3 only, added afterwards |
 
 The one-liner arm follows Ponytail's practice. If a one-line instruction matches the skill, the skill is not worth its tokens, and the benchmark should show that.

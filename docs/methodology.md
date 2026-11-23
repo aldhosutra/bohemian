@@ -36,7 +36,7 @@ Every direction must be:
 - **different in kind** from the other directions: if one sentence summarizes two directions, they are one;
 - **not the famous opposite** ("dark instead of light" is the second most common answer).
 
-Directions come from six technique families. The family matters more than the technique, because two techniques from one family produce the same kind of surprise:
+Directions come from five technique families, plus an external seed for thin briefs. The family matters more than the technique, because two techniques from one family produce the same kind of surprise:
 
 | Family | What moves | Examples |
 |---|---|---|
@@ -45,9 +45,9 @@ Directions come from six technique families. The family matters more than the te
 | form | what shape it takes | borrowed vessel, constraint manipulation, structural displacement |
 | subtraction | what is left out | remove the expected center, cut the explanation |
 | lens | who sees it | displaced witness, inverted stake, wrong expert |
-| chance | where the start comes from | an external seed (`seed.py`) |
+| (chance) | where the start comes from | an external seed (`seed.py`), used only for thin briefs |
 
-Each technique in `references/techniques.md` comes with **how it goes cheap**. Perspective inversion decays into "the object narrates", and source-domain transfer decays into "life is like jazz". The benchmark showed why this matters: in v1, the first technique on the list (the displaced witness) appeared in 12 of 44 dev plans. The skill's escape had become its own default, so v2 says outright that the list order is not a ranking.
+Each family in the skill's table comes with **how it goes cheap**. Perspective inversion decays into "the object narrates", and source-domain transfer decays into "life is like jazz". The benchmark showed why this matters: in v1, the first technique on the list (the displaced witness) appeared in 12 of 44 dev plans. The skill's escape had become its own default, so v2 says outright that the list order is not a ranking.
 
 ### 4. Choose
 
@@ -110,3 +110,7 @@ Limits: nothing forces the model to log. The log mixes all projects on a machine
 - It cannot verify facts. It is told not to invent facts that could pass as real.
 - It does not know what is fresh *to a particular reader*: a move that is new to the model's average may be familiar in a niche.
 - Its gains over a strong one-line instruction are unproven (see [`benchmark-results.md`](benchmark-results.md)).
+
+## v4: the same method, compressed
+
+The current skill (v4b) keeps the method above but runs it as a **five-line plan**: fixed parts (with the target length as a number), the default, three directions from different families, the pick, the reason. The six critique tests became one check (swap, default, payoff, brief). Three rules were added after comparing against Antialgorithm's outputs: names come from the world of the piece, not from stock names; numbers, times and days appear only when the reader needs them; endings stop when the piece is done. See [`benchmark-results.md`](benchmark-results.md) for what this changed.

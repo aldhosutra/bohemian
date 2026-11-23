@@ -18,16 +18,17 @@ A language model picks likely continuations, and the likely story about a lonely
 
 ## How Bohemian works
 
-A six-step method in [`skills/bohemian/SKILL.md`](skills/bohemian/SKILL.md):
+One file, [`skills/bohemian/SKILL.md`](skills/bohemian/SKILL.md), about 1,100 words. Before writing, the model makes a five-line plan, in its thinking or in hidden notes:
 
-1. **Read the brief.** Separate what is fixed (length, format, facts, audience, voice) from what is open.
-2. **Name the default** for each layer: premise, shape, material, voice.
-3. **Diverge for a reason.** Build directions from different technique *families* (premise, material, form, subtraction, lens, chance). Each must be anchored in a fact of this brief, different in kind from the others, and not just the famous opposite.
-4. **Choose** what serves the purpose and has the strongest hook. Not the strangest option.
-5. **Make it** concrete and fully realized, in the user's voice, inside every limit.
-6. **Critique and refine once:** swap test, default test, reason test, tells, payoff test, brief test.
+1. **Fixed:** format, facts, audience, voice, and the target length as a number.
+2. **Default:** the obvious premise, shape and stock material for this brief.
+3. **Directions:** three that differ in kind, each from a different technique *family* (premise, material, form, subtraction, lens) and each grown from a specific fact of the brief.
+4. **Pick:** the strongest hook that still serves the purpose. Not the strangest, not the most restrained.
+5. **Reason:** one sentence, from the brief, for why it belongs here.
 
-Each technique in [`references/techniques.md`](skills/bohemian/references/techniques.md) names **how it goes cheap**, because every escape eventually becomes a default. Optional stdlib scripts add an external seed for thin briefs (`seed.py`), a cross-session log of moves by family so the skill doesn't repeat itself (`moves.py`), and a tell linter (`lint.py`). Details: [methodology](docs/methodology.md) · [architecture](docs/architecture.md).
+Each family names **how it goes cheap**, because every escape eventually becomes a default. The writing rules cover concrete detail, names taken from the world of the piece rather than stock names, numbers only when the reader needs them, endings that stop, and never running longer than the brief asks. A final check asks whether the piece could be pasted into another brief, whether it pays off as fully as the obvious version would, and whether it does exactly what was asked.
+
+Optional stdlib scripts add an external seed for thin briefs (`seed.py`), a cross-session log of moves by family so the skill doesn't repeat itself (`moves.py`), and a tell linter (`lint.py`). Details: [methodology](docs/methodology.md) · [architecture](docs/architecture.md).
 
 **Intensity** is defined by what may move: `mild` (material and wording), `bold`, the default (adds premise, angle and shape), `wild` (anything the brief doesn't fix, still coherent).
 
@@ -37,32 +38,40 @@ Each technique in [`references/techniques.md`](skills/bohemian/references/techni
 
 Benchmark: 54 creative tasks, two generator models (DeepSeek V4.1 Flash, Claude Haiku 5.5), 3 samples each, blinded LLM judges from other model families, judge-free metrics, per-task bootstrap CIs. Headline numbers come from 42 test tasks never looked at during tuning. Full report: **[docs/benchmark-results.md](docs/benchmark-results.md)**.
 
-**Against the same model with no skill**, Bohemian v3 (current):
+The current skill is **v4b**, a lean rewrite of the earlier v3 (about 4,400 words with its reference files). On the test split:
 
-| | result [95% CI] |
-|---|---|
-| Judges preferred the Bohemian output | **73%** [65–80] of pairs |
-| More distinctive / less predictable | 80% / 82% |
-| Task fit | 53% [48–57], no measurable change |
-| Clichés per 100 words, held-out lexicon the skill never sees | −50% |
-| Similarity to an "obvious answer" anchor | −18% |
-| Diversity across repeated samples | +48% |
-| Stronger-judge audit (GPT-5.4-mini, 40 pairs) | 92% preferred |
+| | no skill | one-line prompt | [Antialgorithm](https://github.com/mankidev/antialgorithm) | Bohemian v3 | **Bohemian v4b** |
+|---|---|---|---|---|---|
+| Input tokens per call (DeepSeek / Haiku) | ~80 / 120 | ~100 / 140 | 2,422 / 3,236 | ~6,100 / 8,800 | **1,624 / 2,318** |
+| Output length (words) | 169 | 194 | 169 | 203 | **173** |
+| Hard limits passed | 94.0% | 87.0% | 88.4% | 89.8% | **94.9%** |
+| Clichés per 100 words | 0.44 | 0.28 | **0.03** | 0.21 | 0.18 |
+| Similarity to an "obvious answer" anchor (lower = more original) | 0.737 | 0.626 | **0.549** | 0.605 | 0.582 |
+| Diversity across repeated samples | 0.187 | 0.267 | **0.323** | 0.276 | 0.319 |
 
-**Against a one-line prompt** ("Be original: avoid cliches and look past the first, most obvious idea"), **Bohemian has not been shown to be better.** The two cheap judges preferred the one-liner (Bohemian 37% [31–43]). The stronger judge called it roughly even (55%, n=40). On judge-free measures, Bohemian is slightly further from the obvious answer (−3%) and the two models converge less (−5%). Otherwise the arms are statistically tied.
+Blinded judgments, Bohemian v4b's win rate [95% CI]:
 
-**Against [Antialgorithm](https://github.com/mankidev/antialgorithm)**, the skill Bohemian builds on, there is **no clear winner**. Head-to-head, the cheap judges preferred Bohemian 59% [52–65], partly because it writes longer, and the stronger judge called it even (52%). Judges rated Bohemian higher against the shared references. Antialgorithm wins every judge-free originality measure: about 8× fewer clichés, further from the obvious answer, more varied, 20% shorter. [Details](docs/benchmark-results.md#bohemian-vs-antialgorithm).
+| against | cheap judges: preferred | cheap judges: task fit | stronger judge (GPT-5.4-mini, 40 pairs): preferred |
+|---|---|---|---|
+| no skill | **68%** [60–76] | 45% [40–50] | 85% |
+| one-line prompt ("Be original: avoid cliches and look past the first, most obvious idea") | 33% [28–38] | 39% [35–44] | 48% |
+| Antialgorithm | 57% [52–62] | 50% [46–55] | 48% |
+
+What this shows:
+
+- **Against no skill, Bohemian clearly wins**: judges prefer it, it is less clichéd (−89% on held-out clichés), further from the obvious answer (−21%) and more varied (+71%), at the same length and with the best hard-limit pass rate of any arm.
+- **Against the one-line prompt, it has not been shown to be better.** The cheap judges prefer the one-liner. The stronger judge calls it even. Judge-free, Bohemian is slightly further from the obvious answer, more varied, and keeps limits far better (94.9% vs 87.0%).
+- **Against Antialgorithm, it is a tie on quality and cheaper.** About 30% fewer input tokens. Cheap judges lean Bohemian, the stronger judge calls it even, and Antialgorithm is still a little further from the obvious answer and much lower on clichés.
 
 **Costs and caveats:**
 
-- Bohemian misses hard length limits more often than baseline (89.8% vs 94.0% pass).
-- Its outputs are 20% longer, and judges favor longer outputs. In length-matched pairs it wins 70% against baseline.
-- Flash fiction is its weakest category (42% vs baseline).
+- Cheap judges rate v4b's task fit below baseline (45%). The stronger judge rates it above (65%).
+- Fiction, character sketches and short poems are its weakest categories (40%, 39% and 52% preferred vs baseline).
 - **No human evaluation has been run.** A blind review kit is included.
 
 ## Examples
 
-Picked by a fixed rule (first test task per category, sample 0), not for quality. More in [docs/examples.md](docs/examples.md), including the worst case.
+From the v3 benchmark run. Picked by a fixed rule (first test task per category, sample 0), not for quality. More in [docs/examples.md](docs/examples.md), including the worst case.
 
 *"Write 5 headlines for a news story about a town that banned cars from its center."* (DeepSeek)
 
@@ -103,7 +112,7 @@ npx skills add OWNER/bohemian
 
 **Manual:** copy or clone `skills/bohemian/` into your agent's skills folder, for example `~/.claude/skills/bohemian` for Claude Code. To update, pull or re-run the install command. Your move log in `~/.local/state/bohemian/` is untouched by updates.
 
-**Any chat model:** paste `SKILL.md` (and optionally the three reference files) into the system prompt. That is how the benchmark runs it.
+**Any chat model:** paste `SKILL.md` into the system prompt. That is how the benchmark runs it.
 
 The scripts are optional and need only Python 3.
 
@@ -149,13 +158,12 @@ Tests: `python3 -m unittest discover -s tests`.
 
 ## Known limitations
 
-- **Not better than a strong one-line instruction** on the evidence so far (see above).
+- **Not better than a strong one-line instruction** on the evidence so far (see above), and not more original than Antialgorithm by the judge-free measures.
 - **No human ratings.** All quality evidence comes from LLM judges, which here favored longer and more ornamental text and showed position bias.
 - **Cheap generators only.** Results are for two small, fast models with thinking off. Larger models and agents with extended thinking are untested.
-- **The method depends on planning.** With thinking off, Haiku skipped the planning steps in most outputs even when told to plan. DeepSeek always planned.
-- **Length limits** are missed more often than with plain prompting.
-- **Fiction** (short scenes) is the weakest category.
-- **The escape becomes the default.** Even with the second-order tells listed, outputs still slip into some of them (a named weekday, a reflex triad, "Ember" in coffee names).
+- **The method depends on planning.** With thinking off, Haiku wrote its plan in 92 of 162 v4b outputs. DeepSeek always planned.
+- **Fiction and character work** are the weakest categories.
+- **The escape becomes the default.** Outputs still slip into some second-order tells (a clock time to look concrete, a stock first name).
 - **Memory** is best-effort. Nothing forces the model to log its moves, and the log is per machine, not per project.
 
 ## Credits
