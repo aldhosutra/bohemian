@@ -108,18 +108,18 @@ The same task with Haiku produced Bohemian copy that is barely different from ba
 
 ## Install
 
-The skill lives in `skills/bohemian/`. Replace `OWNER` with the GitHub account hosting this repo.
+The skill lives in `skills/bohemian/`.
 
 **Any agent that reads Agent Skills** (Claude Code, Codex, Cursor, OpenCode, Gemini CLI, GitHub Copilot and others), via the [skills CLI](https://github.com/vercel-labs/skills):
 
 ```bash
-npx skills add OWNER/bohemian
+npx skills add aldhosutra/bohemian
 ```
 
 **Claude Code plugin:**
 
 ```
-/plugin marketplace add OWNER/bohemian
+/plugin marketplace add aldhosutra/bohemian
 /plugin install bohemian@bohemian
 ```
 
